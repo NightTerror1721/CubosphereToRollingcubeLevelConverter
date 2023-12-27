@@ -21,29 +21,34 @@ import lombok.NonNull;
  *
  * @author Marc
  */
-public enum Theme
+public enum Music
 {
-    EGYPT("Egypt", "egypt"),
-    BONUS("Bonus"),
-    CLOUDY("Cloudy", "cloudy"),
-    INCA("Inca", "inca"),
-    STORM("Storm", "stormy"),
-    ARTIC("Artic", "alpine"),
-    VALLEY("Valley", "valley"),
-    FIELD("Field_Remastered"),
-    CHINA("China"),
-    ATLANTIS("Atlantis_Remastered"),
-    HAZE("Haze_Remastered"),
-    MARS("Mars_Remastered", "mars"),
-    CHESS("Chess", "chess"),
-    NIGHT("Night", "night");
-    
-    public static final @NonNull Theme DEFAULT = EGYPT;
+    EGYPT("Egypt", "01_-_hiro", "Ziggurat"),
+    HILLS("Hills", "02_-_hills"),
+    INCA("Inca", "03_-_inca", "Jungle Bed"),
+    VALLEY("Valley", "The Sun Will Come"),
+    ARTIC("Artic", "04_-_arctic", "Arctican"),
+    COWBOY("Cowboy", "05_-_cowboy"),
+    FIELD("Field", "06_-_field"),
+    ATLANTIS("Atlantis", "07_-_atlantis"),
+    HAZE("Haze", "08_-_haze"),
+    MARS("Mars", "09_-_mars", "Melodies de Mars"),
+    HELL("Hell", "10_-_hell"),
+    STORM("Storm", "Ruin"),
+    CHINA("China", "Streets of Asia"),
+    CHESS("Chess", "Escape from the Citadel"),
+    BONUS1("Bonus1", "11_-_bonus_1"),
+    BONUS2("Bonus2", "12_-_bonus_2"),
+    BONUS3("Bonus3", "13_-_bonus_3"),
+    KULA_BETA("KulaBeta", "15_-_beta"),
+    KULA_HIDDEN("KulaHidden", "14_-_hidden_track");
+        
+    public static final @NonNull Music DEFAULT = EGYPT;
     
     @Getter private final @NonNull String rollingcubeKey;
     private final @NonNull Set<String> cubosphereKeys;
     
-    private Theme(@NonNull String rollingcubeKey, String... cubosphereKeys)
+    private Music(@NonNull String rollingcubeKey, String... cubosphereKeys)
     {
         this.rollingcubeKey = rollingcubeKey;
         if(cubosphereKeys == null || cubosphereKeys.length < 1)
@@ -58,13 +63,13 @@ public enum Theme
     public final String toString() { return getRollingcubeKey(); }
     
     
-    private static final @NonNull Map<String, Theme> MAP = Stream.of(values())
+    private static final @NonNull Map<String, Music> MAP = Stream.of(values())
             .flatMap(th -> Stream.concat(
                     th.cubosphereKeys.stream().map(ck -> Pair.of(ck.toLowerCase(), th)),
                     Stream.of(Pair.of(th.getRollingcubeKey().toLowerCase(), th))))
             .collect(Collectors.toMap(Pair::first, Pair::second));
     
-    public static @NonNull Theme fromKey(String key)
+    public static @NonNull Music fromKey(String key)
     {
         if(key == null)
             return DEFAULT;
@@ -82,13 +87,13 @@ public enum Theme
     
     
     
-    public static final class Serializer extends StdSerializer<Theme>
+    public static final class Serializer extends StdSerializer<Music>
     {
-        public Serializer() { super(Theme.class); }
-        public Serializer(Class<Theme> cls) { super(cls); }
+        public Serializer() { super(Music.class); }
+        public Serializer(Class<Music> cls) { super(cls); }
 
         @Override
-        public void serialize(Theme value, JsonGenerator gen, SerializerProvider provider) throws IOException
+        public void serialize(Music value, JsonGenerator gen, SerializerProvider provider) throws IOException
         {
             if(value == null)
                 gen.writeString("");
@@ -97,19 +102,19 @@ public enum Theme
         }
     }
     
-    public static final class Deserializer extends StdDeserializer<Theme>
+    public static final class Deserializer extends StdDeserializer<Music>
     {
-        public Deserializer() { super(Theme.class); }
-        public Deserializer(Class<Theme> cls) { super(cls); }
+        public Deserializer() { super(Music.class); }
+        public Deserializer(Class<Music> cls) { super(cls); }
 
         @Override
-        public @NonNull Theme deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException
+        public @NonNull Music deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException
         {
             JsonNode node = p.getCodec().readTree(p);
             if(!node.isTextual())
                 return DEFAULT;
             
-            return Theme.fromKey(node.asText());
+            return Music.fromKey(node.asText());
         }
     }
 }

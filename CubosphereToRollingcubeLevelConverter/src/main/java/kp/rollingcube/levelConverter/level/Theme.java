@@ -91,7 +91,7 @@ public enum Theme
         public void serialize(Theme value, JsonGenerator gen, SerializerProvider provider) throws IOException
         {
             if(value == null)
-                gen.writeString("");
+                gen.writeString(DEFAULT.toString());
             else
                 gen.writeString(value.toString());
         }

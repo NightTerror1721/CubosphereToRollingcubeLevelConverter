@@ -3,6 +3,7 @@ package kp.rollingcube.levelConverter.json;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import kp.rollingcube.levelConverter.level.*;
 import kp.rollingcube.levelConverter.utils.Version;
 import lombok.NonNull;
 
@@ -14,7 +15,7 @@ public final class JsonMapper
 {
     private JsonMapper() {}
     
-    private static final @NonNull ObjectMapper OBJECT_MAPPER = initObjectMapper();
+    public static final @NonNull ObjectMapper OBJECT_MAPPER = initObjectMapper();
     
     
     private static @NonNull ObjectMapper initObjectMapper()
@@ -25,6 +26,26 @@ public final class JsonMapper
         SimpleModule module = new SimpleModule();
         module.addSerializer(Version.class, new Version.Serializer());
         module.addDeserializer(Version.class, new Version.Deserializer());
+        module.addSerializer(SideTag.class, new SideTag.Serializer());
+        module.addDeserializer(SideTag.class, new SideTag.Deserializer());
+        module.addSerializer(Direction.class, new Direction.Serializer());
+        module.addDeserializer(Direction.class, new Direction.Deserializer());
+        module.addSerializer(Theme.class, new Theme.Serializer());
+        module.addDeserializer(Theme.class, new Theme.Deserializer());
+        module.addSerializer(Music.class, new Music.Serializer());
+        module.addDeserializer(Music.class, new Music.Deserializer());
+        module.addSerializer(BlockTemplate.class, new BlockTemplate.Serializer());
+        module.addDeserializer(BlockTemplate.class, new BlockTemplate.Deserializer());
+        module.addSerializer(ItemTemplate.class, new ItemTemplate.Serializer());
+        module.addDeserializer(ItemTemplate.class, new ItemTemplate.Deserializer());
+        module.addSerializer(EnemyTemplate.class, new EnemyTemplate.Serializer());
+        module.addDeserializer(EnemyTemplate.class, new EnemyTemplate.Deserializer());
+        module.addSerializer(BallTemplate.class, new BallTemplate.Serializer());
+        module.addDeserializer(BallTemplate.class, new BallTemplate.Deserializer());
+        module.addSerializer(BlockId.class, new BlockId.Serializer());
+        module.addDeserializer(BlockId.class, new BlockId.Deserializer());
+        module.addSerializer(SideId.class, new SideId.Serializer());
+        module.addDeserializer(SideId.class, new SideId.Deserializer());
         mapper.registerModule(module);
         
         return mapper;

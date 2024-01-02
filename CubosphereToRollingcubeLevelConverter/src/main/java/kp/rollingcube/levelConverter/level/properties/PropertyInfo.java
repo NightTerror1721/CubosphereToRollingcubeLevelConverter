@@ -1,5 +1,6 @@
 package kp.rollingcube.levelConverter.level.properties;
 
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.stream.Stream;
 import lombok.Data;
@@ -60,6 +61,32 @@ public final class PropertyInfo
         return new PropertyInfo(PropertyType.ENUM, name, PropertyValue.of(defaultIndex), inputEnumValues);
     }
     
+    
+    public @NonNull PropertyValue getDefaultValue() { return defaultValue.copy(); }
+    
+    public @NonNull String[] getEnumValues()
+    {
+        if(enumValues == null || enumValues.length < 1)
+            return new String[0];
+        
+        return Arrays.copyOf(enumValues, enumValues.length);
+    }
+    
+    public @NonNull String getEnumValueSafe(int enumOrdinal)
+    {
+        return enumOrdinal < 0 || enumOrdinal >= enumValues.length ? "null" : enumValues[enumOrdinal];
+    }
+    
+    public int getEnumOrdinalFromValue(@NonNull String value)
+    {
+        for(int i = 0; i < enumValues.length; ++i)
+            if(enumValues[i].equals(value))
+                return i;
+        
+        return defaultValue.getEnumOrdinal();
+    }
+    
+    
     public @NonNull PropertyValue validateValueRef(@NonNull PropertyValue value)
     {
         if(type == PropertyType.ENUM)
@@ -70,5 +97,11 @@ public final class PropertyInfo
     public @NonNull PropertyValue validateValueCopy(@NonNull PropertyValue value)
     {
         return validateValueRef(value.copy());
+    }
+    
+    
+    public @NonNull Property createNewProperty()
+    {
+        return new Property(this);
     }
 }

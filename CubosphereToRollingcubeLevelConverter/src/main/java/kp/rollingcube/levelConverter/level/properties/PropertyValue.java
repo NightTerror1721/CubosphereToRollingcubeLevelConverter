@@ -47,7 +47,7 @@ public final class PropertyValue
         if(value == null)
             value = "false";
         
-        return of(value.equalsIgnoreCase("true") ? true : false);
+        return of(value.equalsIgnoreCase("true"));
     }
     
     public static @NonNull PropertyValue fromStringAsString(String value) { return of(value); }

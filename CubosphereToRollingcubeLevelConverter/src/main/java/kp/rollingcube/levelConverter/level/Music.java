@@ -96,7 +96,7 @@ public enum Music
         public void serialize(Music value, JsonGenerator gen, SerializerProvider provider) throws IOException
         {
             if(value == null)
-                gen.writeString("");
+                gen.writeString(DEFAULT.toString());
             else
                 gen.writeString(value.toString());
         }

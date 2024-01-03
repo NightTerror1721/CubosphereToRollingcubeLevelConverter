@@ -16,12 +16,12 @@ public final class Block extends LevelElement<BlockTemplate>
     @Getter @Setter private int y = 0;
     @Getter @Setter private int z = 0;
     
-    private Side up;
-    private Side down;
-    private Side left;
-    private Side right;
-    private Side front;
-    private Side back;
+    private @NonNull Side up;
+    private @NonNull Side down;
+    private @NonNull Side left;
+    private @NonNull Side right;
+    private @NonNull Side front;
+    private @NonNull Side back;
     
     
     private Block(BlockTemplate template)
@@ -36,7 +36,7 @@ public final class Block extends LevelElement<BlockTemplate>
         this.back = createNewSide(SideTag.BACK);
     }
     
-    static @NonNull Block create(BlockTemplate template)
+    public static @NonNull Block create(BlockTemplate template)
     {
         if(template == null)
             template = BlockTemplate.DEFAULT;
@@ -77,16 +77,16 @@ public final class Block extends LevelElement<BlockTemplate>
     }
     
     
-    public final void changeUpSide(@NonNull BlockTemplate newTemplate) { up = changeSide(up, newTemplate); }
-    public final void changeDownSide(@NonNull BlockTemplate newTemplate) { down = changeSide(down, newTemplate); }
-    public final void changeLeftSide(@NonNull BlockTemplate newTemplate) { left = changeSide(left, newTemplate); }
-    public final void changeRightSide(@NonNull BlockTemplate newTemplate) { right = changeSide(right, newTemplate); }
-    public final void changeFrontSide(@NonNull BlockTemplate newTemplate) { front = changeSide(front, newTemplate); }
-    public final void changeBackSide(@NonNull BlockTemplate newTemplate) { back = changeSide(back, newTemplate); }
+    public final Side changeUpSide(@NonNull BlockTemplate newTemplate) { return up = changeSide(up, newTemplate); }
+    public final Side changeDownSide(@NonNull BlockTemplate newTemplate) { return down = changeSide(down, newTemplate); }
+    public final Side changeLeftSide(@NonNull BlockTemplate newTemplate) { return left = changeSide(left, newTemplate); }
+    public final Side changeRightSide(@NonNull BlockTemplate newTemplate) { return right = changeSide(right, newTemplate); }
+    public final Side changeFrontSide(@NonNull BlockTemplate newTemplate) { return front = changeSide(front, newTemplate); }
+    public final Side changeBackSide(@NonNull BlockTemplate newTemplate) { return back = changeSide(back, newTemplate); }
     
-    public final void changeSide(@NonNull SideTag sideTag, @NonNull BlockTemplate newTemplate)
+    public final Side changeSide(@NonNull SideTag sideTag, @NonNull BlockTemplate newTemplate)
     {
-        switch(sideTag)
+        return switch(sideTag)
         {
             case UP -> changeUpSide(newTemplate);
             case DOWN -> changeDownSide(newTemplate);
@@ -94,12 +94,12 @@ public final class Block extends LevelElement<BlockTemplate>
             case RIGHT -> changeRightSide(newTemplate);
             case FRONT -> changeFrontSide(newTemplate);
             case BACK -> changeBackSide(newTemplate);
-        }
+        };
     }
     
-    public final void changeSide(@NonNull SideId id, @NonNull BlockTemplate newTemplate)
+    public final Side changeSide(@NonNull SideId id, @NonNull BlockTemplate newTemplate)
     {
-        changeSide(id.getSideTag(), newTemplate);
+        return changeSide(id.getSideTag(), newTemplate);
     }
     
     @JsonIgnore

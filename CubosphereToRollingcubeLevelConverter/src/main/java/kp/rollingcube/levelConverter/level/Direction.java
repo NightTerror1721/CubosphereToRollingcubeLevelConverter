@@ -22,13 +22,15 @@ public enum Direction
     SOUTH,
     WEST;
     
+    public final int getId() { return ordinal(); }
     
-    public static Direction fromId(int sideId)
+    
+    public static Direction fromId(int directionId)
     {
-        if(sideId <= 0)
+        if(directionId <= 0)
             return NORTH;
         
-        return switch((sideId - 1) % 6)
+        return switch((directionId - 1) % 4)
         {
             case 0 -> NORTH;
             case 1 -> EAST;
@@ -49,9 +51,9 @@ public enum Direction
         public void serialize(Direction value, JsonGenerator gen, SerializerProvider provider) throws IOException
         {
             if(value == null)
-                gen.writeNumber(NORTH.ordinal());
+                gen.writeNumber(NORTH.getId());
             else
-                gen.writeNumber(value.ordinal());
+                gen.writeNumber(value.getId());
         }
     }
     

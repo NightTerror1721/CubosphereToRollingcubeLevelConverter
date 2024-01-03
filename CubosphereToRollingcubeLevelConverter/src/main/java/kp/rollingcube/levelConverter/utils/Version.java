@@ -28,6 +28,8 @@ public final class Version implements Comparable<Version>
 {
     private static final Pattern PATTERN = Pattern.compile("^[0-9]+(.[0-9]+){0,3}$");
     
+    public static final Version CURRENT_LEVEL_VERSION = of(0, 1);
+    
     private int major;
     private int minor;
     private int patch;

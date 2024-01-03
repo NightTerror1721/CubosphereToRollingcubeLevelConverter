@@ -9,6 +9,8 @@ import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
 import kp.rollingcube.levelConverter.json.JsonMapper;
+import kp.rollingcube.levelConverter.level.cubosphere.CubosphereBlock;
+import kp.rollingcube.levelConverter.level.cubosphere.CubosphereEnemy;
 import kp.rollingcube.levelConverter.utils.Version;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -75,10 +77,25 @@ public class Level
         return block;
     }
     
+    public final @NonNull Block createNewBlock(@NonNull CubosphereBlock cblock)
+    {
+        var block = cblock.toRollingcubeBlock();
+        blocks.add(block);
+        return block;
+    }
+    
     public final @NonNull Enemy createNewEnemy(@NonNull EnemyTemplate template)
     {
         var enemy = Enemy.create(template);
         enemies.add(enemy);
+        return enemy;
+    }
+    
+    public final Enemy createNewEnemy(@NonNull CubosphereEnemy cenemy)
+    {
+        var enemy = cenemy.toRollingcubeEnemy();
+        if(enemy != null)
+            enemies.add(enemy);
         return enemy;
     }
     

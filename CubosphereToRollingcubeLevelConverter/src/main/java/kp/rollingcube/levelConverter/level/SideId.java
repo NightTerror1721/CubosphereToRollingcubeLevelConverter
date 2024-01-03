@@ -1,14 +1,5 @@
 package kp.rollingcube.levelConverter.level;
 
-import com.fasterxml.jackson.core.JacksonException;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import java.io.IOException;
 import lombok.NonNull;
 import lombok.Value;
 
@@ -78,37 +69,5 @@ public final class SideId
             return blockId.equals(sideId.blockId) && sideTag == sideId.sideTag;
         
         return false;
-    }
-    
-    
-    public static final class Serializer extends StdSerializer<SideId>
-    {
-        public Serializer() { super(SideId.class); }
-        public Serializer(Class<SideId> cls) { super(cls); }
-
-        @Override
-        public void serialize(SideId value, JsonGenerator gen, SerializerProvider provider) throws IOException
-        {
-            if(value == null)
-                gen.writeNumber(INVALID.toInt());
-            else
-                gen.writeNumber(value.toInt());
-        }
-    }
-    
-    public static final class Deserializer extends StdDeserializer<SideId>
-    {
-        public Deserializer() { super(SideId.class); }
-        public Deserializer(Class<SideId> cls) { super(cls); }
-
-        @Override
-        public @NonNull SideId deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException
-        {
-            JsonNode node = p.getCodec().readTree(p);
-            if(!node.isNumber())
-                return INVALID;
-            
-            return of(node.asInt());
-        }
     }
 }

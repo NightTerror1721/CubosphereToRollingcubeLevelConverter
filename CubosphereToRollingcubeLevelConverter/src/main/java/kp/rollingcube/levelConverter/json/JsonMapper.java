@@ -42,10 +42,6 @@ public final class JsonMapper
         module.addDeserializer(EnemyTemplate.class, new EnemyTemplate.Deserializer());
         module.addSerializer(BallTemplate.class, new BallTemplate.Serializer());
         module.addDeserializer(BallTemplate.class, new BallTemplate.Deserializer());
-        module.addSerializer(BlockId.class, new BlockId.Serializer());
-        module.addDeserializer(BlockId.class, new BlockId.Deserializer());
-        module.addSerializer(SideId.class, new SideId.Serializer());
-        module.addDeserializer(SideId.class, new SideId.Deserializer());
         mapper.registerModule(module);
         
         return mapper;

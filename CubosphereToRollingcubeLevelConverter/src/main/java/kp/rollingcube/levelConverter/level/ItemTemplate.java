@@ -15,6 +15,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import kp.rollingcube.levelConverter.level.properties.PropertyInfo;
+import kp.rollingcube.levelConverter.utils.MapUtils;
 import kp.rollingcube.levelConverter.utils.Pair;
 import lombok.Getter;
 import lombok.NonNull;
@@ -103,7 +104,7 @@ public enum ItemTemplate implements Template
     
     private static final @NonNull Map<String, ItemTemplate> MAP = Stream.of(values())
             .flatMap(th -> Stream.of(Pair.of(th.getRollingcubeKey().toLowerCase(), th)))
-            .collect(Collectors.toMap(Pair::first, Pair::second));
+            .collect(Collectors.toMap(Pair::first, Pair::second, MapUtils.DuplicatedCriteria.alwaysFirst()));
     
     public static @NonNull ItemTemplate fromRollingcubeKey(String key)
     {

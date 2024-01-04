@@ -14,6 +14,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import kp.rollingcube.levelConverter.level.properties.PropertyInfo;
+import kp.rollingcube.levelConverter.utils.MapUtils;
 import kp.rollingcube.levelConverter.utils.Pair;
 import lombok.Getter;
 import lombok.NonNull;
@@ -86,14 +87,17 @@ public enum BallTemplate implements Template
             .flatMap(th -> Stream.concat(
                     th.cubosphereKeys.stream().map(ck -> Pair.of(ck.toLowerCase(), th)),
                     Stream.of(Pair.of(th.getRollingcubeKey().toLowerCase(), th))))
-            .collect(Collectors.toMap(Pair::first, Pair::second));
+            .collect(Collectors.toMap(Pair::first, Pair::second, MapUtils.DuplicatedCriteria.alwaysFirst()));
     
     public static @NonNull BallTemplate fromKey(String key)
     {
         if(key == null)
             return DEFAULT;
         
-        return MAP.getOrDefault(key.toLowerCase(), DEFAULT);
+        var template = MAP.getOrDefault(key.toLowerCase(), DEFAULT);
+        if(BallTemplate.isNull(template))
+            return DEFAULT;
+        return template;
     }
     
     public static boolean existsKey(String key)

@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import kp.rollingcube.levelConverter.utils.MapUtils;
 import kp.rollingcube.levelConverter.utils.Pair;
 import lombok.Getter;
 import lombok.NonNull;
@@ -67,7 +68,7 @@ public enum Music
             .flatMap(th -> Stream.concat(
                     th.cubosphereKeys.stream().map(ck -> Pair.of(ck.toLowerCase(), th)),
                     Stream.of(Pair.of(th.getRollingcubeKey().toLowerCase(), th))))
-            .collect(Collectors.toMap(Pair::first, Pair::second));
+            .collect(Collectors.toMap(Pair::first, Pair::second, MapUtils.DuplicatedCriteria.alwaysFirst()));
     
     public static @NonNull Music fromKey(String key)
     {

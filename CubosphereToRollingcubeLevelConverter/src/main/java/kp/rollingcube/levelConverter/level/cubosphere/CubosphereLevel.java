@@ -85,7 +85,7 @@ public final class CubosphereLevel
         return itemsMap.getOrDefault(id, null);
     }
     
-    public final CubosphereEnemy getItem(@NonNull EnemyId id)
+    public final CubosphereEnemy getEnemy(@NonNull EnemyId id)
     {
         return enemiesMap.getOrDefault(id, null);
     }

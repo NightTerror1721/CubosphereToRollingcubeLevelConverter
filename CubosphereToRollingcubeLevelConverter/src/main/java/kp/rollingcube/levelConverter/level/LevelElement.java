@@ -17,7 +17,7 @@ abstract class LevelElement<T extends Template>
 {
     @Getter private final @NonNull T template;
     
-    @JsonInclude(content = JsonInclude.Include.NON_EMPTY)
+    @JsonInclude(value = JsonInclude.Include.NON_EMPTY, content = JsonInclude.Include.NON_EMPTY)
     @Getter private final @NonNull Map<String, Property> properties = new HashMap<>();
     
     LevelElement(@NonNull T template)

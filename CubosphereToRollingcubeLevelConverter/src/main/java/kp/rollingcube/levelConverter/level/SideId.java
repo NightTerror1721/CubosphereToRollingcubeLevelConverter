@@ -40,6 +40,14 @@ public final class SideId
         return of(BlockId.of(blockId), sideTag);
     }
     
+    public static @NonNull SideId fromCubosphereId(int cubosphereId)
+    {
+        int rawBlockId = cubosphereId / 6;
+        int rawSideId = cubosphereId % 6;
+        
+        return of(BlockId.of(rawBlockId), SideTag.fromCubosphereSideId(rawSideId));
+    }
+    
     public int getCode() { return sideTag.computeSideId(blockId.getCode()); }
     
     public final boolean isValid() { return blockId.isValid(); }

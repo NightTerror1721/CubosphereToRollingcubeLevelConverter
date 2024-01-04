@@ -2,6 +2,7 @@ package kp.rollingcube.levelConverter.level;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -44,12 +45,12 @@ public final class Block extends LevelElement<BlockTemplate>
         return new Block(template);
     }
     
-    @JsonGetter("up") public final Side getJsonUp() { return getJsonSide(up); }
-    @JsonGetter("down") public final Side getJsonDown() { return getJsonSide(down); }
-    @JsonGetter("left") public final Side getJsonLeft() { return getJsonSide(left); }
-    @JsonGetter("right") public final Side getJsonRight() { return getJsonSide(right); }
-    @JsonGetter("front") public final Side getJsonFront() { return getJsonSide(front); }
-    @JsonGetter("back") public final Side getJsonBack() { return getJsonSide(back); }
+    @JsonGetter("up") @JsonInclude(JsonInclude.Include.NON_NULL) public final Side getJsonUp() { return getJsonSide(up); }
+    @JsonGetter("down") @JsonInclude(JsonInclude.Include.NON_NULL) public final Side getJsonDown() { return getJsonSide(down); }
+    @JsonGetter("left") @JsonInclude(JsonInclude.Include.NON_NULL) public final Side getJsonLeft() { return getJsonSide(left); }
+    @JsonGetter("right") @JsonInclude(JsonInclude.Include.NON_NULL) public final Side getJsonRight() { return getJsonSide(right); }
+    @JsonGetter("front") @JsonInclude(JsonInclude.Include.NON_NULL) public final Side getJsonFront() { return getJsonSide(front); }
+    @JsonGetter("back") @JsonInclude(JsonInclude.Include.NON_NULL) public final Side getJsonBack() { return getJsonSide(back); }
     
     @JsonIgnore public final @NonNull Side getUp() { return up; }
     @JsonIgnore public final @NonNull Side getDown() { return down; }

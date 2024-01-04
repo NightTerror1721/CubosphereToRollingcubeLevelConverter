@@ -2,6 +2,7 @@ package kp.rollingcube.levelConverter.level;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
@@ -55,12 +56,14 @@ public class Level
     
     
     @JsonGetter("blocks")
+    @JsonInclude(value = JsonInclude.Include.NON_EMPTY, content = JsonInclude.Include.NON_EMPTY)
     public final @NonNull List<Block> getJsonBlocks()
     {
         return blocks.stream().filter(Block::mayAppearInJson).toList();
     }
     
     @JsonGetter("enemies")
+    @JsonInclude(value = JsonInclude.Include.NON_EMPTY, content = JsonInclude.Include.NON_EMPTY)
     public final @NonNull List<Enemy> getJsonEnemies()
     {
         return enemies.stream().filter(Enemy::mayAppearInJson).toList();

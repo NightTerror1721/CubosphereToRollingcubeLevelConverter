@@ -1,5 +1,9 @@
 package kp.rollingcube.levelConverter.level.properties;
 
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+import java.io.IOException;
 import static kp.rollingcube.levelConverter.level.properties.PropertyType.INTEGER;
 import lombok.Getter;
 import lombok.NonNull;
@@ -79,5 +83,20 @@ public final class Property
             value.copyFrom(info.getDefaultValue());
         }
         validateValue();
+    }
+    
+    public static final class Serializer extends StdSerializer<Property>
+    {
+        public Serializer() { super(Property.class); }
+        public Serializer(Class<Property> cls) { super(cls); }
+
+        @Override
+        public void serialize(Property value, JsonGenerator gen, SerializerProvider provider) throws IOException
+        {
+            if(value == null)
+                gen.writeString("");
+            else
+                gen.writeString(value.toJsonProperty().getValue());
+        }
     }
 }

@@ -49,6 +49,23 @@ public enum SideTag
         };
     }
     
+    public static SideTag fromCubosphereSideId(int cubosphereSideId)
+    {
+        if(cubosphereSideId <= 0)
+            return UP;
+        
+        return switch(cubosphereSideId % 6)
+        {
+            case 0 -> UP;
+            case 1 -> DOWN;
+            case 2 -> RIGHT;
+            case 3 -> LEFT;
+            case 4 -> FRONT;
+            case 5 -> BACK;
+            default -> UP;
+        };
+    }
+    
     
     
     public static final class Serializer extends StdSerializer<SideTag>

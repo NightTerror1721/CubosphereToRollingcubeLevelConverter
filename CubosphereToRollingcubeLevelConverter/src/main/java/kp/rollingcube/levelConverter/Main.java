@@ -1,5 +1,8 @@
 package kp.rollingcube.levelConverter;
 
+import java.io.IOException;
+import java.nio.file.Path;
+import kp.rollingcube.levelConverter.level.Level;
 import kp.rollingcube.levelConverter.level.cubosphere.lua.LevelLoaderContext;
 import org.classdump.luna.exec.CallException;
 import org.classdump.luna.exec.CallPausedException;
@@ -11,7 +14,7 @@ import org.classdump.luna.load.LoaderException;
  */
 public class Main
 {
-    public static void main(String[] args) throws LoaderException, CallException, CallPausedException, InterruptedException
+    public static void main(String[] args) throws LoaderException, CallException, CallPausedException, InterruptedException, IOException
     {
         /*var program = "print \"hello world\"";
         
@@ -23,7 +26,7 @@ public class Main
         
         DirectCallExecutor.newExecutor().call(state, main);*/
         
-        final var levelCode = """
+        /*final var levelCode = """
                               GLOBAL_SetVar("StartTime",90)
                               GLOBAL_SetVar("MaxTime",90)
                               GLOBAL_SetVar("GoggleTime",15)
@@ -31,6 +34,12 @@ public class Main
         """.trim();
         
         var context = new LevelLoaderContext();
-        var level = context.loadLevel(levelCode);
+        context.loadLevel(levelCode);*/
+        
+        var context = new LevelLoaderContext();
+        var levelTestPath = Path.of("leveltest.ldef");
+        var clevel = context.loadLevel(levelTestPath);
+        var level = clevel.toRollingcubeLevel("output");
+        Level.write(Path.of("output.json"), level);
     }
 }

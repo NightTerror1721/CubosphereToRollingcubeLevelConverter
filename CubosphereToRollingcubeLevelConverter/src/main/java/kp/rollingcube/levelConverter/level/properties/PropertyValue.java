@@ -62,7 +62,7 @@ public final class PropertyValue
     public void setFloat(float value) { _int = 0; _float = value; _str = ""; }
     public void setBoolean(boolean value) { _int = value ? 1 : 0; _float = 0; _str = ""; }
     public void setString(@NonNull String value) { _int = 0; _float = 0; _str = value; }
-    public void setEnumOrdinal(int value) { _int = Math.abs(value); _float = 0; _str = ""; }
+    public void setEnumOrdinal(int value) { _int = Math.max(0, value); _float = 0; _str = ""; }
     
     public @NonNull PropertyValue copy() { return new PropertyValue(_int, _float, _str); }
     

@@ -2,8 +2,10 @@ package kp.rollingcube.levelConverter.json;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import kp.rollingcube.levelConverter.level.*;
+import kp.rollingcube.levelConverter.level.properties.Property;
 import kp.rollingcube.levelConverter.utils.Version;
 import lombok.NonNull;
 
@@ -22,6 +24,7 @@ public final class JsonMapper
     {
         var mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
         
         SimpleModule module = new SimpleModule();
         module.addSerializer(Version.class, new Version.Serializer());
@@ -42,6 +45,7 @@ public final class JsonMapper
         module.addDeserializer(EnemyTemplate.class, new EnemyTemplate.Deserializer());
         module.addSerializer(BallTemplate.class, new BallTemplate.Serializer());
         module.addDeserializer(BallTemplate.class, new BallTemplate.Deserializer());
+        module.addSerializer(Property.class, new Property.Serializer());
         mapper.registerModule(module);
         
         return mapper;

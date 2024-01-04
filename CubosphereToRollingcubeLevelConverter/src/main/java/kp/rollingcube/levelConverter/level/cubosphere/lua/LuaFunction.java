@@ -7,6 +7,7 @@ import org.classdump.luna.runtime.AbstractFunction0;
 import org.classdump.luna.runtime.AbstractFunction1;
 import org.classdump.luna.runtime.AbstractFunction2;
 import org.classdump.luna.runtime.AbstractFunction3;
+import org.classdump.luna.runtime.AbstractFunction4;
 import org.classdump.luna.runtime.AbstractFunctionAnyArg;
 import org.classdump.luna.runtime.ExecutionContext;
 import org.classdump.luna.runtime.ResolvedControlThrowable;
@@ -22,13 +23,38 @@ public class LuaFunction
     public <T> @NonNull AbstractFunction1 of(@NonNull Closures.OneArgsVoid<T> fn) { return new Templates.OneArgsVoidFunction(fn); }
     public <T1, T2> @NonNull AbstractFunction2 of(@NonNull Closures.TwoArgsVoid<T1, T2> fn) { return new Templates.TwoArgsVoidFunction(fn); }
     public <T1, T2, T3> @NonNull AbstractFunction3 of(@NonNull Closures.ThreeArgsVoid<T1, T2, T3> fn) { return new Templates.ThreeArgsVoidFunction(fn); }
+    public <T1, T2, T3, T4> @NonNull AbstractFunction4 of(@NonNull Closures.FourArgsVoid<T1, T2, T3, T4> fn) { return new Templates.FourArgsVoidFunction(fn); }
     public @NonNull AbstractFunctionAnyArg of(@NonNull Closures.VarArgsVoid fn) { return new Templates.VarArgsVoidFunction(fn); }
     
     public @NonNull AbstractFunction0 of(@NonNull Closures.ZeroArgs fn) { return new Templates.ZeroArgsFunction(fn); }
     public <T> @NonNull AbstractFunction1 of(@NonNull Closures.OneArgs<T> fn) { return new Templates.OneArgsFunction(fn); }
     public <T1, T2> @NonNull AbstractFunction2 of(@NonNull Closures.TwoArgs<T1, T2> fn) { return new Templates.TwoArgsFunction(fn); }
     public <T1, T2, T3> @NonNull AbstractFunction3 of(@NonNull Closures.ThreeArgs<T1, T2, T3> fn) { return new Templates.ThreeArgsFunction(fn); }
+    public <T1, T2, T3, T4> @NonNull AbstractFunction4 of(@NonNull Closures.FourArgs<T1, T2, T3, T4> fn) { return new Templates.FourArgsFunction(fn); }
     public @NonNull AbstractFunctionAnyArg of(@NonNull Closures.VarArgs fn) { return new Templates.VarArgsFunction(fn); }
+    
+    public AbstractFunction0 withContext(final @NonNull Closures.OneArgs<ExecutionContext> fn)
+    {
+        return new AbstractFunction0()
+        {
+            @Override
+            public void invoke(ExecutionContext context) throws ResolvedControlThrowable
+            {
+                var result = fn.invoke(context);
+                if(result != null)
+                    context.getReturnBuffer().setTo(result);
+                else
+                    context.getReturnBuffer().setTo();
+            }
+
+            @Override
+            public void resume(ExecutionContext context, Object suspendedState) throws ResolvedControlThrowable
+            {
+                fn.resume(context, suspendedState);
+            }
+
+        };
+    }
     
     
     @UtilityClass
@@ -104,6 +130,26 @@ public class LuaFunction
             public void invoke(ExecutionContext context, T1 arg1, T2 arg2, T3 arg3) throws ResolvedControlThrowable
             {
                 fn.invoke(arg1, arg2, arg3);
+                context.getReturnBuffer().setTo();
+            }
+
+            @Override
+            public void resume(ExecutionContext context, Object suspendedState) throws ResolvedControlThrowable
+            {
+                fn.resume(context, suspendedState);
+            }
+        }
+        
+        private class FourArgsVoidFunction<T1, T2, T3, T4> extends AbstractFunction4<T1, T2, T3, T4>
+        {
+            private final @NonNull Closures.FourArgsVoid<T1, T2, T3, T4> fn;
+            
+            private FourArgsVoidFunction(@NonNull Closures.FourArgsVoid<T1, T2, T3, T4> fn) { this.fn = fn; }
+
+            @Override
+            public void invoke(ExecutionContext context, T1 arg1, T2 arg2, T3 arg3, T4 arg4) throws ResolvedControlThrowable
+            {
+                fn.invoke(arg1, arg2, arg3, arg4);
                 context.getReturnBuffer().setTo();
             }
 
@@ -210,6 +256,25 @@ public class LuaFunction
             }
         }
         
+        private class FourArgsFunction<T1, T2, T3, T4> extends AbstractFunction4<T1, T2, T3, T4>
+        {
+            private final @NonNull Closures.FourArgs<T1, T2, T3, T4> fn;
+            
+            private FourArgsFunction(@NonNull Closures.FourArgs<T1, T2, T3, T4> fn) { this.fn = fn; }
+
+            @Override
+            public void invoke(ExecutionContext context, T1 arg1, T2 arg2, T3 arg3, T4 arg4) throws ResolvedControlThrowable
+            {
+                context.getReturnBuffer().setTo(fn.invoke(arg1, arg2, arg3, arg4));
+            }
+
+            @Override
+            public void resume(ExecutionContext context, Object suspendedState) throws ResolvedControlThrowable
+            {
+                fn.resume(context, suspendedState);
+            }
+        }
+        
         private class VarArgsFunction extends AbstractFunctionAnyArg
         {
             private final @NonNull Closures.VarArgs fn;
@@ -266,6 +331,12 @@ public class LuaFunction
         }
         
         @FunctionalInterface
+        public interface FourArgsVoid<T1, T2, T3, T4> extends AbstractClosure
+        {
+            void invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
+        }
+        
+        @FunctionalInterface
         public interface VarArgsVoid extends AbstractClosure
         {
             void invoke(Object[] args);
@@ -293,6 +364,12 @@ public class LuaFunction
         public interface ThreeArgs<T1, T2, T3> extends AbstractClosure
         {
             Object invoke(T1 arg1, T2 arg2, T3 arg3);
+        }
+        
+        @FunctionalInterface
+        public interface FourArgs<T1, T2, T3, T4> extends AbstractClosure
+        {
+            Object invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
         }
         
         @FunctionalInterface

@@ -194,6 +194,10 @@ public class CubosphereBlock extends CubosphereLevelElement
             default -> Block.create(BlockTemplate.DEFAULT);
         };
         
+        rblock.setX(x);
+        rblock.setY(y);
+        rblock.setZ(z);
+        
         up.toRollingcubeSide(rblock);
         down.toRollingcubeSide(rblock);
         left.toRollingcubeSide(rblock);

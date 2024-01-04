@@ -58,12 +58,6 @@ public class CubosphereSide extends CubosphereLevelElement
     
     final void toRollingcubeSide(@NonNull Block rblock)
     {
-        if(hasInvalidTemplate())
-        {
-            changeToInvalidSide(rblock);
-            return;
-        }
-        
         switch(getTemplate().toLowerCase())
         {
             case "aircondition" -> changeToInvalidSide(rblock);
@@ -166,6 +160,13 @@ public class CubosphereSide extends CubosphereLevelElement
             case "tspikes" -> changeToInvalidSide(rblock);
             case "warptunnel" -> changeToInvalidSide(rblock); // block only //
             default -> changeToInvalidSide(rblock);
+        }
+        
+        if(hasItem())
+        {
+            Side rside = rblock.getSide(tag);
+            if(rside.canHasItem())
+                rside.setItem(item.toRollingcubeItem());
         }
     }
     

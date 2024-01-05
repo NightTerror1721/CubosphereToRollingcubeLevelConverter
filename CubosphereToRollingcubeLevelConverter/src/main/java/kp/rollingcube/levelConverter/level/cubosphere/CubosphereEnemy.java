@@ -5,6 +5,8 @@ import kp.rollingcube.levelConverter.level.Direction;
 import kp.rollingcube.levelConverter.level.Enemy;
 import kp.rollingcube.levelConverter.level.EnemyTemplate;
 import kp.rollingcube.levelConverter.level.SideTag;
+import kp.rollingcube.levelConverter.ui.UILogger;
+import kp.rollingcube.levelConverter.utils.LoggerUtils;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -43,7 +45,7 @@ public class CubosphereEnemy extends CubosphereLevelElement
     
     
     
-    public final Enemy toRollingcubeEnemy()
+    public final Enemy toRollingcubeEnemy(UILogger logger)
     {
         if(hasInvalidTemplate())
             return null;
@@ -69,7 +71,7 @@ public class CubosphereEnemy extends CubosphereLevelElement
                 renemy.setPropertyBoolean("TiedToPlane", getPropertyBoolean("TiedToPlane"));
                 yield renemy;
             }
-            case "jumper" -> null;
+            case "jumper" -> unknown(logger);
             case "randomwalker" -> {
                 var renemy = Enemy.create(EnemyTemplate.RANDOM_WALKER);
                 renemy.setPropertyFloat("Speed", getPropertyFloat("Speed"));
@@ -77,7 +79,7 @@ public class CubosphereEnemy extends CubosphereLevelElement
                 renemy.setPropertyEnumOrdinal("SideRestriction", 0);
                 yield renemy;
             }
-            default -> null;
+            default -> unknown(logger);
         };
     }
     
@@ -92,5 +94,11 @@ public class CubosphereEnemy extends CubosphereLevelElement
                 .filter(availables::contains)
                 .map(cd -> Character.toString((char) cd.intValue()))
                 .collect(Collectors.joining());
+    }
+    
+    private Enemy unknown(UILogger logger)
+    {
+        LoggerUtils.warn(logger, "Enemy '%s' not exists in Rollingcube. Replaced by no-enemy", getTemplate().toLowerCase());
+        return null;
     }
 }

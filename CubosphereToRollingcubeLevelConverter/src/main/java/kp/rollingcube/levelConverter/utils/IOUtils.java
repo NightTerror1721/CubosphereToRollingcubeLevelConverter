@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;
 
@@ -16,6 +18,13 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class IOUtils
 {
+    public String CUBOSPHERE_LEVEL_FORMAT = "ldef";
+    public String ROLLINGCUBE_LEVEL_FORMAT = "json";
+    
+    public String CUBOSPHERE_LEVEL_DOT_FORMAT = "." + CUBOSPHERE_LEVEL_FORMAT;
+    public String ROLLINGCUBE_LEVEL_DOT_FORMAT = "." + ROLLINGCUBE_LEVEL_FORMAT;
+    
+    
     public @NonNull String readAll(@NonNull Reader reader) throws IOException
     {
         StringBuilder sb = new StringBuilder();
@@ -39,5 +48,32 @@ public class IOUtils
         {
             return readAll(reader);
         }
+    }
+    
+    
+    public @NonNull Path getUserDirectory()
+    {
+        return Path.of(System.getProperty("user.dir")).toAbsolutePath();
+    }
+    
+    public @NonNull Path concatElementAtPathEnd(@NonNull Path path, @NonNull String element)
+    {
+        if(path.getParent() == null)
+            return Paths.get(path.getFileName().toString() + element);
+        return path.getParent().resolve(path.getFileName().toString() + element);
+    }
+    
+    public @NonNull URL getClasspathResourceUrl(@NonNull String path)
+    {
+        if(!path.startsWith("/"))
+            path = "/" + path;
+        return IOUtils.class.getResource(path);
+    }
+    
+    public @NonNull InputStream getClasspathResourceAsStream(@NonNull String path)
+    {
+        if(!path.startsWith("/"))
+            path = "/" + path;
+        return IOUtils.class.getResourceAsStream(path);
     }
 }

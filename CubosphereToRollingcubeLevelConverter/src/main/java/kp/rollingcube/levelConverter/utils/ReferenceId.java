@@ -23,6 +23,9 @@ public abstract class ReferenceId
     
     public final int toInt() { return code; }
     
+    @Override
+    public String toString() { return Integer.toString(code); }
+    
     
     public static abstract class BaseGenerator<T extends ReferenceId> implements Iterator<T>
     {

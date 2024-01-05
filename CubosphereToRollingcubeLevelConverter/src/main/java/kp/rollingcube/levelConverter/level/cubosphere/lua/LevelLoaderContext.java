@@ -6,6 +6,7 @@ import java.io.Reader;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import kp.rollingcube.levelConverter.level.BlockId;
 import kp.rollingcube.levelConverter.level.SideId;
 import kp.rollingcube.levelConverter.level.SideTag;
@@ -13,7 +14,9 @@ import kp.rollingcube.levelConverter.level.cubosphere.CubosphereLevel;
 import kp.rollingcube.levelConverter.level.cubosphere.CubospherePropertyValue;
 import kp.rollingcube.levelConverter.level.cubosphere.EnemyId;
 import kp.rollingcube.levelConverter.level.cubosphere.ItemId;
+import kp.rollingcube.levelConverter.ui.UILogger;
 import kp.rollingcube.levelConverter.utils.IOUtils;
+import kp.rollingcube.levelConverter.utils.LoggerUtils;
 import lombok.NonNull;
 import org.classdump.luna.ByteString;
 import org.classdump.luna.StateContext;
@@ -37,29 +40,31 @@ public class LevelLoaderContext
 {
     private CubosphereLevel level;
     private Table env;
+    private UILogger logger;
     
     private final @NonNull CompilerChunkLoader loader = CompilerChunkLoader.of("Cubosphere_LevelLoader"); 
     private final @NonNull Map<Object, Object> functions = initFunctions();
     
-    public @NonNull CubosphereLevel loadLevel(@NonNull InputStream in) throws IOException
+    public @NonNull Optional<CubosphereLevel> loadLevel(@NonNull InputStream in, UILogger logger) throws IOException
     {
-        return loadLevel(IOUtils.readAll(in));
+        return loadLevel(IOUtils.readAll(in), logger);
     }
     
-    public @NonNull CubosphereLevel loadLevel(@NonNull Reader reader) throws IOException
+    public @NonNull Optional<CubosphereLevel> loadLevel(@NonNull Reader reader, UILogger logger) throws IOException
     {
-        return loadLevel(IOUtils.readAll(reader));
+        return loadLevel(IOUtils.readAll(reader), logger);
     }
     
-    public @NonNull CubosphereLevel loadLevel(@NonNull Path levelFilePath) throws IOException
+    public @NonNull Optional<CubosphereLevel> loadLevel(@NonNull Path levelFilePath, UILogger logger) throws IOException
     {
-        return loadLevel(IOUtils.readAllFromFile(levelFilePath));
+        return loadLevel(IOUtils.readAllFromFile(levelFilePath), logger);
     }
     
-    public @NonNull CubosphereLevel loadLevel(@NonNull String levelCode)
+    public @NonNull Optional<CubosphereLevel> loadLevel(@NonNull String levelCode, UILogger logger)
     {
         final var lv = new CubosphereLevel();
         level = lv;
+        this.logger = logger;
         try
         {
             var state = StateContexts.newDefaultInstance();
@@ -74,14 +79,17 @@ public class LevelLoaderContext
         catch(InterruptedException | CallException | CallPausedException | LoaderException ex)
         {
             ex.printStackTrace(System.err);
+            error("Error during Cubosphere level load: %s", ex.getLocalizedMessage());
+            return Optional.empty();
         }
         finally
         {
             level = null;
             env = null;
+            this.logger = null;
         }
         
-        return lv;
+        return Optional.of(lv);
     }
     
     private void prepareFunctions(@NonNull Table env)
@@ -159,16 +167,25 @@ public class LevelLoaderContext
                 put("LEVEL_AddItem", LuaFunction.of((Number blockIdNum, ByteString sideStr, ByteString template) -> {
                     var blockId = BlockId.of(blockIdNum.intValue());
                     if(blockId.isInvalid())
+                    {
+                        warn("Unknown block with id: %s", blockId);
                         return ItemId.INVALID.getCode();
+                    }
                     
                     var sideTag = strToSideTag(sideStr);
                     var sideId = SideId.of(blockId, sideTag);
                     if(sideId.isInvalid())
+                    {
+                        warn("Unknown side with id: %s", sideId);
                         return ItemId.INVALID.getCode();
+                    }
                     
                     var item = level.createNewItem(sideId, template.toString());
                     if(item == null)
+                    {
+                        warn("Cannot load item '%s' on side: %s", template, sideId);
                         return ItemId.INVALID.getCode();
+                    }
                     
                     return item.getId().getCode();
                 }));
@@ -176,23 +193,35 @@ public class LevelLoaderContext
                 put("ENEMY_New", LuaFunction.of((ByteString template) -> {
                     var enemy = level.createNewEnemy(template.toString());
                     if(enemy == null)
+                    {
+                        warn("Cannot load enemy '%s'", template);
                         return EnemyId.INVALID.getCode();
+                    }
                     return enemy.getId().getCode();
                 }));
                 
                 put("LEVEL_ChangeSide", LuaFunction.of((Number blockIdNum, ByteString sideStr, ByteString template) -> {
                     var blockId = BlockId.of(blockIdNum.intValue());
                     if(blockId.isInvalid())
+                    {
+                        warn("Unknown block with id: %s", blockId);
                         return;
+                    }
                     
                     var sideTag = strToSideTag(sideStr);
                     var sideId = SideId.of(blockId, sideTag);
                     if(sideId.isInvalid())
+                    {
+                        warn("Unknown side with id: %s", sideId);
                         return;
+                    }
                     
                     var block = level.getBlock(blockId);
                     if(block == null)
+                    {
+                        warn("Unknown block with id: %s", blockId);
                         return;
+                    }
                     
                     block.changeSide(sideId, template.toString());
                 }));
@@ -200,11 +229,17 @@ public class LevelLoaderContext
                 put("BLOCK_SetVar", LuaFunction.of((Number blockIdNum, ByteString varname, Object value) -> {
                     var blockId = BlockId.of(blockIdNum.intValue());
                     if(blockId.isInvalid())
+                    {
+                        warn("Unknown block with id: %s", blockId);
                         return;
+                    }
                     
                     var block = level.getBlock(blockId);
                     if(block == null)
+                    {
+                        warn("Unknown block with id: %s", blockId);
                         return;
+                    }
                     
                     block.setProperty(varname.toString(), CubospherePropertyValue.of(value));
                 }));
@@ -212,11 +247,17 @@ public class LevelLoaderContext
                 put("SIDE_SetVar", LuaFunction.of((Number sideIdNum, ByteString varname, Object value) -> {
                     var sideId = decodeSideId(sideIdNum);
                     if(sideId.isInvalid())
+                    {
+                        warn("Unknown side with id: %s", sideId);
                         return;
+                    }
                     
                     var side = level.getSide(sideId);
                     if(side == null)
+                    {
+                        warn("Unknown side with id: %s", sideId);
                         return;
+                    }
                     
                     side.setProperty(varname.toString(), CubospherePropertyValue.of(value));
                 }));
@@ -224,11 +265,17 @@ public class LevelLoaderContext
                 put("ITEM_SetVar", LuaFunction.of((Number itemIdNum, ByteString varname, Object value) -> {
                     var itemId = ItemId.of(itemIdNum.intValue());
                     if(itemId.isInvalid())
+                    {
+                        warn("Unknown item with id: %s", itemId);
                         return;
+                    }
                     
                     var item = level.getItem(itemId);
                     if(item == null)
+                    {
+                        warn("Unknown item with id: %s", itemId);
                         return;
+                    }
                     
                     item.setProperty(varname.toString(), CubospherePropertyValue.of(value));
                 }));
@@ -236,11 +283,17 @@ public class LevelLoaderContext
                 put("ACTOR_SetVar", LuaFunction.of((Number enemyIdNum, ByteString varname, Object value) -> {
                     var enemyId = EnemyId.of(enemyIdNum.intValue());
                     if(enemyId.isInvalid())
+                    {
+                        warn("Unknown enemy with id: %s", enemyId);
                         return;
+                    }
                     
                     var enemy = level.getEnemy(enemyId);
                     if(enemy == null)
+                    {
+                        warn("Unknown enemy with id: %s", enemyId);
                         return;
+                    }
                     
                     enemy.setProperty(varname.toString(), CubospherePropertyValue.of(value));
                 }));
@@ -248,19 +301,31 @@ public class LevelLoaderContext
                 put("ACTOR_SetStart", LuaFunction.of((Number enemyIdNum, Number sideIdNum, Number rotation) -> {
                     var enemyId = EnemyId.of(enemyIdNum.intValue());
                     if(enemyId.isInvalid())
+                    {
+                        warn("Unknown enemy with id: %s", enemyId);
                         return;
+                    }
                     
                     var sideId = decodeSideId(sideIdNum);
                     if(sideId.isInvalid())
+                    {
+                        warn("Unknown side with id: %s", sideId);
                         return;
+                    }
                     
                     var enemy = level.getEnemy(enemyId);
                     if(enemy == null)
+                    {
+                        warn("Unknown enemy with id: %s", enemyId);
                         return;
+                    }
                     
                     var side = level.getSide(sideId);
                     if(side == null)
+                    {
+                        warn("Unknown enemy with id: %s", enemyId);
                         return;
+                    }
                     
                     var block = side.getBlock();
                     
@@ -283,6 +348,7 @@ public class LevelLoaderContext
                         catch(InterruptedException | CallException | CallPausedException ex)
                         {
                             ex.printStackTrace(System.err);
+                            warn("Unexpected problem during 'InitLevel' part: %s", ex.getLocalizedMessage());
                         }
                     }
                     else
@@ -372,7 +438,7 @@ public class LevelLoaderContext
         return LuaFunction.of(() -> {});
     }
     
-    private static @NonNull Number[] decodeVector(Table table)
+    private @NonNull Number[] decodeVector(Table table)
     {
         Number[] vector = new Number[] { 0, 0, 0 };
         if(table == null)
@@ -385,11 +451,14 @@ public class LevelLoaderContext
         return vector;
     }
     
-    private static void vectorIndexSet(Table table, Number[] vector, int vectorIndex)
+    private void vectorIndexSet(Table table, Number[] vector, int vectorIndex)
     {
         int tableIndex = vectorIndex + 1;
         if(table.rawlen() <= tableIndex)
+        {
+            warn("Malformed vertor creation");
             return;
+        }
         
         var value = table.rawget(tableIndex);
         if(value instanceof Number n)
@@ -420,4 +489,7 @@ public class LevelLoaderContext
         
         return SideId.fromCubosphereId(sideIdNum.intValue());
     }
+    
+    private void warn(@NonNull String text, Object... args) { LoggerUtils.warn(logger, text, args); }
+    private void error(@NonNull String text, Object... args) { LoggerUtils.error(logger, text, args); }
 }

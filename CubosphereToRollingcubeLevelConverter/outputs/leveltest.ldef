@@ -1,0 +1,615 @@
+{
+  "name" : "",
+  "version" : "0.1",
+  "theme" : "Egypt",
+  "music" : "Egypt",
+  "initialTime" : 100,
+  "maxTime" : 100,
+  "themeMode" : "NORMAL",
+  "ballTemplate" : "Hell",
+  "initialPosition" : {
+    "x" : 0,
+    "y" : 0,
+    "z" : 0,
+    "side" : 0,
+    "direction" : 0
+  },
+  "blocks" : [ {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 0,
+    "up" : {
+      "template" : "Laser",
+      "properties" : {
+        "Activated" : "false",
+        "NumOfBeams" : "1",
+        "Color" : "0"
+      }
+    },
+    "down" : {
+      "template" : "Switch",
+      "properties" : {
+        "Activated" : "0",
+        "Color" : "0"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -2,
+    "z" : -1,
+    "up" : {
+      "template" : "Teleport",
+      "properties" : {
+        "Order" : "0",
+        "Activated" : "0",
+        "Color" : "0",
+        "Direction" : "2"
+      }
+    },
+    "down" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -1,
+    "y" : -2,
+    "z" : -1
+  }, {
+    "template" : "Normal",
+    "x" : -1,
+    "y" : -2,
+    "z" : 0,
+    "down" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -1,
+    "y" : -2,
+    "z" : 1
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -2,
+    "z" : 1,
+    "up" : {
+      "template" : "Exit",
+      "properties" : {
+        "Secret" : "false",
+        "NextLevel" : ""
+      }
+    },
+    "down" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : -2,
+    "z" : 1
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : -2,
+    "z" : 0,
+    "down" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : -2,
+    "z" : -1
+  }, {
+    "template" : "Breaking",
+    "x" : 0,
+    "y" : -5,
+    "z" : -2
+  }, {
+    "template" : "Breaking",
+    "x" : 0,
+    "y" : -5,
+    "z" : -3
+  }, {
+    "template" : "Breaking",
+    "x" : 0,
+    "y" : -5,
+    "z" : 2
+  }, {
+    "template" : "Breaking",
+    "x" : 0,
+    "y" : -5,
+    "z" : 3
+  }, {
+    "template" : "Breaking",
+    "x" : 2,
+    "y" : -5,
+    "z" : 0
+  }, {
+    "template" : "Breaking",
+    "x" : 3,
+    "y" : -5,
+    "z" : 0
+  }, {
+    "template" : "Breaking",
+    "x" : -2,
+    "y" : -5,
+    "z" : 0
+  }, {
+    "template" : "Breaking",
+    "x" : -3,
+    "y" : -5,
+    "z" : 0
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -5,
+    "z" : 0,
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Key"
+      }
+    },
+    "down" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Goblet"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -5,
+    "z" : 4,
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Key"
+      }
+    },
+    "down" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -5,
+    "z" : -4,
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Key"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -5,
+    "z" : 0,
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -4,
+    "y" : -5,
+    "z" : 0,
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 3,
+    "z" : 2,
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BlueDiamond"
+      }
+    },
+    "down" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "Key"
+      }
+    },
+    "front" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -1,
+    "y" : 3,
+    "z" : 2,
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "front" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -2,
+    "y" : 3,
+    "z" : 2,
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : 3,
+    "z" : 2,
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "front" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : 3,
+    "z" : 2,
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : 3,
+    "z" : 1,
+    "back" : {
+      "template" : "StaticSpikes"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : 3,
+    "z" : -1,
+    "front" : {
+      "template" : "StaticSpikes"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : 3,
+    "z" : -2,
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : 3,
+    "z" : -2,
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "back" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 3,
+    "z" : -2,
+    "up" : {
+      "template" : "Teleport",
+      "properties" : {
+        "Order" : "0",
+        "Activated" : "0",
+        "Color" : "0",
+        "Direction" : "2"
+      }
+    },
+    "down" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "GreenDiamond"
+      }
+    },
+    "back" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -1,
+    "y" : 3,
+    "z" : -2,
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "back" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -2,
+    "y" : 3,
+    "z" : -2,
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -2,
+    "y" : 3,
+    "z" : -1,
+    "front" : {
+      "template" : "StaticSpikes"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -2,
+    "y" : 3,
+    "z" : 1,
+    "back" : {
+      "template" : "StaticSpikes"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -2,
+    "y" : -1,
+    "z" : -2,
+    "front" : {
+      "template" : "Laser",
+      "properties" : {
+        "Activated" : "true",
+        "NumOfBeams" : "1",
+        "Color" : "0"
+      }
+    },
+    "right" : {
+      "template" : "Laser",
+      "properties" : {
+        "Activated" : "true",
+        "NumOfBeams" : "1",
+        "Color" : "0"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : -1,
+    "z" : -2,
+    "left" : {
+      "template" : "Laser",
+      "properties" : {
+        "Activated" : "true",
+        "NumOfBeams" : "1",
+        "Color" : "0"
+      }
+    },
+    "front" : {
+      "template" : "Laser",
+      "properties" : {
+        "Activated" : "true",
+        "NumOfBeams" : "1",
+        "Color" : "0"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : -1,
+    "z" : 2,
+    "left" : {
+      "template" : "Laser",
+      "properties" : {
+        "Activated" : "true",
+        "NumOfBeams" : "1",
+        "Color" : "0"
+      }
+    },
+    "back" : {
+      "template" : "Laser",
+      "properties" : {
+        "Activated" : "true",
+        "NumOfBeams" : "1",
+        "Color" : "0"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -2,
+    "y" : -1,
+    "z" : 2,
+    "back" : {
+      "template" : "Laser",
+      "properties" : {
+        "Activated" : "true",
+        "NumOfBeams" : "1",
+        "Color" : "0"
+      }
+    },
+    "right" : {
+      "template" : "Laser",
+      "properties" : {
+        "Activated" : "true",
+        "NumOfBeams" : "1",
+        "Color" : "0"
+      }
+    }
+  }, {
+    "template" : "Blinking",
+    "properties" : {
+      "TimeActivated" : "2.5175",
+      "Phase" : "3.0175",
+      "TimeDeactivated" : "2.5175",
+      "TimeBlending" : "0.5"
+    },
+    "x" : -2,
+    "y" : 5,
+    "z" : 0
+  }, {
+    "template" : "Blinking",
+    "properties" : {
+      "TimeActivated" : "2.5175",
+      "Phase" : "0.0",
+      "TimeDeactivated" : "2.5175",
+      "TimeBlending" : "0.5"
+    },
+    "x" : 2,
+    "y" : 5,
+    "z" : 0
+  }, {
+    "template" : "Blinking",
+    "properties" : {
+      "TimeActivated" : "2.5175",
+      "Phase" : "0.0",
+      "TimeDeactivated" : "2.5175",
+      "TimeBlending" : "0.5"
+    },
+    "x" : -2,
+    "y" : 0,
+    "z" : 0
+  }, {
+    "template" : "Blinking",
+    "properties" : {
+      "TimeActivated" : "2.5175",
+      "Phase" : "3.0175",
+      "TimeDeactivated" : "2.5175",
+      "TimeBlending" : "0.5"
+    },
+    "x" : 2,
+    "y" : 0,
+    "z" : 0
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 5,
+    "z" : 0,
+    "down" : {
+      "template" : "Laser",
+      "properties" : {
+        "Activated" : "false",
+        "NumOfBeams" : "1",
+        "Color" : "0"
+      }
+    }
+  }, {
+    "template" : "Breaking",
+    "x" : 0,
+    "y" : -5,
+    "z" : 1
+  }, {
+    "template" : "Breaking",
+    "x" : 0,
+    "y" : -5,
+    "z" : -1
+  }, {
+    "template" : "Breaking",
+    "x" : 1,
+    "y" : -5,
+    "z" : 0
+  }, {
+    "template" : "Breaking",
+    "x" : -1,
+    "y" : -5,
+    "z" : 0
+  } ]
+}

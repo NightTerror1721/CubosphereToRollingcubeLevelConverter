@@ -12,6 +12,7 @@ import java.util.List;
 import kp.rollingcube.levelConverter.json.JsonMapper;
 import kp.rollingcube.levelConverter.level.cubosphere.CubosphereBlock;
 import kp.rollingcube.levelConverter.level.cubosphere.CubosphereEnemy;
+import kp.rollingcube.levelConverter.ui.UILogger;
 import kp.rollingcube.levelConverter.utils.Version;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -80,9 +81,9 @@ public class Level
         return block;
     }
     
-    public final @NonNull Block createNewBlock(@NonNull CubosphereBlock cblock)
+    public final @NonNull Block createNewBlock(@NonNull CubosphereBlock cblock, UILogger logger)
     {
-        var block = cblock.toRollingcubeBlock();
+        var block = cblock.toRollingcubeBlock(logger);
         blocks.add(block);
         return block;
     }
@@ -94,9 +95,9 @@ public class Level
         return enemy;
     }
     
-    public final Enemy createNewEnemy(@NonNull CubosphereEnemy cenemy)
+    public final Enemy createNewEnemy(@NonNull CubosphereEnemy cenemy, UILogger logger)
     {
-        var enemy = cenemy.toRollingcubeEnemy();
+        var enemy = cenemy.toRollingcubeEnemy(logger);
         if(enemy != null)
             enemies.add(enemy);
         return enemy;

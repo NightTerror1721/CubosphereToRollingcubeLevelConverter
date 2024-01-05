@@ -12,6 +12,8 @@ import kp.rollingcube.levelConverter.level.SideId;
 import kp.rollingcube.levelConverter.level.SideTag;
 import kp.rollingcube.levelConverter.level.Theme;
 import kp.rollingcube.levelConverter.level.ThemeMode;
+import kp.rollingcube.levelConverter.ui.UILogger;
+import kp.rollingcube.levelConverter.utils.LoggerUtils;
 import kp.rollingcube.levelConverter.utils.Version;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -134,25 +136,25 @@ public final class CubosphereLevel
     }
     
     
-    public final @NonNull Level toRollingcubeLevel(String levelName)
+    public final @NonNull Level toRollingcubeLevel(UILogger logger, String levelName)
     {
-        var level = toRollingcubeLevel();
+        var level = toRollingcubeLevel(logger);
         if(levelName != null && !levelName.isBlank())
             level.setName(levelName);
         return level;
     }
     
-    public final @NonNull Level toRollingcubeLevel()
+    public final @NonNull Level toRollingcubeLevel(UILogger logger)
     {
         var level = new Level();
         level.setVersion(Version.CURRENT_LEVEL_VERSION);
-        level.setTheme(Theme.fromKey(theme));
-        level.setMusic(Music.fromKey(music));
+        level.setTheme(parseTheme(logger));
+        level.setMusic(parseMusic(logger));
         level.setInitialTime(initialTime);
         level.setMaxTime(maxTime);
         level.setThemeMode(ThemeMode.DEFAULT);
         
-        level.setBallTemplate(BallTemplate.fromKey(ballTemplate));
+        level.setBallTemplate(parseBallTemplate(logger));
         level.setInitialPosition(PositionAndSideAndDirection.builder()
                 .x(ballInitialX)
                 .y(ballInitialY)
@@ -162,9 +164,33 @@ public final class CubosphereLevel
                 .build()
         );
         
-        blocks.forEach(level::createNewBlock);
-        enemies.forEach(level::createNewEnemy);
+        blocks.forEach(block -> level.createNewBlock(block, logger));
+        enemies.forEach(enemy -> level.createNewEnemy(enemy, logger));
         
         return level;
+    }
+    
+    private @NonNull Theme parseTheme(UILogger logger)
+    {
+        if(!Theme.existsKey(theme))
+            LoggerUtils.warn(logger, "Theme '%s' not exists in Rollingcube. Replaced by '%s'", theme, Theme.DEFAULT);
+        
+        return Theme.fromKey(theme);
+    }
+    
+    private @NonNull Music parseMusic(UILogger logger)
+    {
+        if(!Music.existsKey(music))
+            LoggerUtils.warn(logger, "Music '%s' not exists in Rollingcube. Replaced by '%s'", music, Music.DEFAULT);
+        
+        return Music.fromKey(music);
+    }
+    
+    private @NonNull BallTemplate parseBallTemplate(UILogger logger)
+    {
+        if(!BallTemplate.existsKey(ballTemplate))
+            LoggerUtils.warn(logger, "Ball template '%s' not exists in Rollingcube. Replaced by '%s'", ballTemplate, BallTemplate.DEFAULT);
+        
+        return BallTemplate.fromKey(ballTemplate);
     }
 }

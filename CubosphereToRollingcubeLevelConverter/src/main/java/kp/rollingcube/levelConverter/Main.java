@@ -1,9 +1,8 @@
 package kp.rollingcube.levelConverter;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import kp.rollingcube.levelConverter.level.Level;
-import kp.rollingcube.levelConverter.level.cubosphere.lua.LevelLoaderContext;
+import kp.rollingcube.levelConverter.ui.LevelConverterFrame;
+import kp.rollingcube.levelConverter.utils.UIUtils;
 import org.classdump.luna.exec.CallException;
 import org.classdump.luna.exec.CallPausedException;
 import org.classdump.luna.load.LoaderException;
@@ -36,10 +35,13 @@ public class Main
         var context = new LevelLoaderContext();
         context.loadLevel(levelCode);*/
         
-        var context = new LevelLoaderContext();
+        /*var context = new LevelLoaderContext();
         var levelTestPath = Path.of("leveltest.ldef");
         var clevel = context.loadLevel(levelTestPath);
         var level = clevel.toRollingcubeLevel("output");
-        Level.write(Path.of("output.json"), level);
+        Level.write(Path.of("output.json"), level);*/
+        
+        UIUtils.useSystemLookAndFeel();
+        LevelConverterFrame.open();
     }
 }

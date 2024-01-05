@@ -5,6 +5,8 @@ import kp.rollingcube.levelConverter.level.BlockId;
 import kp.rollingcube.levelConverter.level.BlockTemplate;
 import kp.rollingcube.levelConverter.level.SideId;
 import kp.rollingcube.levelConverter.level.SideTag;
+import kp.rollingcube.levelConverter.ui.UILogger;
+import kp.rollingcube.levelConverter.utils.LoggerUtils;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -107,15 +109,15 @@ public class CubosphereBlock extends CubosphereLevelElement
     }
     
     
-    public final @NonNull Block toRollingcubeBlock()
+    public final @NonNull Block toRollingcubeBlock(UILogger logger)
     {
         if(hasInvalidTemplate())
-            return Block.create(BlockTemplate.DEFAULT);
+            return unknown(logger);
         
         Block rblock = switch(getTemplate().toLowerCase())
         {
-            case "aircondition" -> Block.create(BlockTemplate.DEFAULT);
-            case "breakclock" -> Block.create(BlockTemplate.DEFAULT);
+            case "aircondition" -> unknown(logger);
+            case "breakclock" -> unknown(logger);
             case "breaking1" -> Block.create(BlockTemplate.BREAKING);
             case "button" -> Block.create(BlockTemplate.BUTTON);
             case "counter" -> {
@@ -147,18 +149,18 @@ public class CubosphereBlock extends CubosphereLevelElement
             case "fire" -> Block.create(BlockTemplate.BURNED);
             case "fspikes" -> Block.create(BlockTemplate.STATIC_SPIKES);
             case "ghost" -> Block.create(BlockTemplate.FULL_INVISIBLE_BLOCK);
-            case "hspikes" -> Block.create(BlockTemplate.DEFAULT);
+            case "hspikes" -> unknown(logger);
             case "icy1" -> Block.create(BlockTemplate.ICY);
             case "invis1" -> Block.create(BlockTemplate.FAR_INVISIBLE_BLOCK);
             case "invis2" -> Block.create(BlockTemplate.NEAR_INVISIBLE_BLOCK);
             case "knife" -> Block.create(BlockTemplate.PATTERN_SPIKES);
             case "laser" -> Block.create(BlockTemplate.LASER);
-            case "lightbarrier" -> Block.create(BlockTemplate.DEFAULT);
-            case "magnet" -> Block.create(BlockTemplate.DEFAULT);
+            case "lightbarrier" -> unknown(logger);
+            case "magnet" -> unknown(logger);
             case "normal1" -> Block.create(BlockTemplate.NORMAL);
-            case "oil" -> Block.create(BlockTemplate.DEFAULT);
+            case "oil" -> unknown(logger);
             case "onedir" -> Block.create(BlockTemplate.ONE_WAY);
-            case "onedirtoggle" -> Block.create(BlockTemplate.DEFAULT);
+            case "onedirtoggle" -> unknown(logger);
             case "phaser" -> {
                 var blk = Block.create(BlockTemplate.BLINKING);
                 
@@ -178,33 +180,39 @@ public class CubosphereBlock extends CubosphereLevelElement
                 yield blk;
             }
             case "plate" -> Block.create(BlockTemplate.PRESSURE_PLATE);
-            case "power" -> Block.create(BlockTemplate.DEFAULT);
+            case "power" -> unknown(logger);
             case "rotate" -> Block.create(BlockTemplate.ROTATOR);
             case "sand" -> Block.create(BlockTemplate.SAND);
             case "spikes" -> Block.create(BlockTemplate.RETRACTABLE_SPIKES);
             case "switch" -> Block.create(BlockTemplate.SWITCH);
-            case "tele_target" -> Block.create(BlockTemplate.DEFAULT);
+            case "tele_target" -> unknown(logger);
             case "teleport" -> Block.create(BlockTemplate.TELEPORT);
             case "timestop" -> Block.create(BlockTemplate.TIME_STOP);
             case "toggleblock" -> Block.create(BlockTemplate.TOGGLE);
             case "tramp" -> Block.create(BlockTemplate.TRAMPOLINE);
             case "tramphigh" -> Block.create(BlockTemplate.VENT);
-            case "tspikes" -> Block.create(BlockTemplate.DEFAULT);
-            case "warptunnel" -> Block.create(BlockTemplate.DEFAULT);
-            default -> Block.create(BlockTemplate.DEFAULT);
+            case "tspikes" -> unknown(logger);
+            case "warptunnel" -> unknown(logger);
+            default -> unknown(logger);
         };
         
         rblock.setX(x);
         rblock.setY(y);
         rblock.setZ(z);
         
-        up.toRollingcubeSide(rblock);
-        down.toRollingcubeSide(rblock);
-        left.toRollingcubeSide(rblock);
-        right.toRollingcubeSide(rblock);
-        front.toRollingcubeSide(rblock);
-        back.toRollingcubeSide(rblock);
+        up.toRollingcubeSide(rblock, logger);
+        down.toRollingcubeSide(rblock, logger);
+        left.toRollingcubeSide(rblock, logger);
+        right.toRollingcubeSide(rblock, logger);
+        front.toRollingcubeSide(rblock, logger);
+        back.toRollingcubeSide(rblock, logger);
         
         return rblock;
+    }
+    
+    private @NonNull Block unknown(UILogger logger)
+    {
+        LoggerUtils.warn(logger, "Block template '%s' not exists in Rollingcube. Replaced by '%s'", getTemplate().toLowerCase(), BlockTemplate.DEFAULT);
+        return Block.create(BlockTemplate.DEFAULT);
     }
 }

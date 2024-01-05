@@ -78,4 +78,7 @@ public final class SideId
         
         return false;
     }
+    
+    @Override
+    public String toString() { return Integer.toString(getCode()); }
 }

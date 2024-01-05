@@ -56,6 +56,20 @@ public class IOUtils
         return Path.of(System.getProperty("user.dir")).toAbsolutePath();
     }
     
+    public @NonNull String getFileName(@NonNull Path file)
+    {
+        var name = file.getFileName().toString();
+        int index = name.lastIndexOf('.');
+        return index < 0 ? name : name.substring(0, index);
+    }
+    
+    public @NonNull String getFileExtension(@NonNull Path file)
+    {
+        var name = file.getFileName().toString();
+        int index = name.lastIndexOf('.');
+        return index < 0 ? "" : name.substring(index + 1);
+    }
+    
     public @NonNull Path concatElementAtPathEnd(@NonNull Path path, @NonNull String element)
     {
         if(path.getParent() == null)

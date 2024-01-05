@@ -143,10 +143,10 @@ public final class LevelConverterFrame extends JFrame
             
             var level = oclevel.get().toRollingcubeLevel(logger);
             
-            Path destFilePath = folderDestPath.resolve(levelPath.getFileName());
+            Path destFilePath = folderDestPath.resolve(IOUtils.getFileName(levelPath) + IOUtils.ROLLINGCUBE_LEVEL_DOT_FORMAT);
             Level.write(destFilePath, level);
 
-            info("-- Finished conversion of '%s' --", levelPath.getFileName());
+            info("-- Finished conversion of '%s' --", destFilePath.getFileName());
         }
         catch(Exception ex)
         {

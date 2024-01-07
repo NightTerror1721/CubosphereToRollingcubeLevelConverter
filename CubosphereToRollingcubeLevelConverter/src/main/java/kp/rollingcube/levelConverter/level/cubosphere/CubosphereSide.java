@@ -139,7 +139,7 @@ public class CubosphereSide extends CubosphereLevelElement
             case "switch" -> {
                 var rside = rblock.changeSide(tag, BlockTemplate.SWITCH);
                 
-                int activated = getPropertyBoolean("StartActive") ? 1 : 0;
+                int activated = getPropertyBoolean("StartActive") ? 0 : 1;
                 
                 rside.setPropertyEnumOrdinal("Activated", activated);
                 rside.setPropertyEnumOrdinal("Color", CubosphereUtils.toRollingcubeColorId(getPropertyInteger("Color")));

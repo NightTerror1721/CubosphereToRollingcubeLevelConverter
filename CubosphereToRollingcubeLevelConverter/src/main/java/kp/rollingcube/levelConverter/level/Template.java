@@ -38,4 +38,25 @@ public interface Template
             default -> true;
         };
     }
+    
+    
+    final class JsonIncludeDefaultFilter
+    {
+        @Override
+        public boolean equals(Object other)
+        {
+            return switch(other)
+            {
+                case Template t -> isNull(t);
+                case null -> false;
+                default -> false;
+            };
+        }
+
+        @Override
+        public int hashCode() {
+            int hash = 5;
+            return hash;
+        }
+    }
 }

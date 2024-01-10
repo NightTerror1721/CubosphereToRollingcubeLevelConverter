@@ -61,18 +61,19 @@ public final class CubosphereUtils
             };
             case FRONT -> switch(cubosphereDirection)
             {
-                case 0 -> Direction.WEST.getId();
-                case 1 -> Direction.SOUTH.getId();
-                case 2 -> Direction.EAST.getId();
-                case 3 -> Direction.NORTH.getId();
-                default -> Direction.NORTH.getId();
-            };
-            case BACK -> switch(cubosphereDirection)
-            {
                 case 0 -> Direction.EAST.getId();
                 case 1 -> Direction.NORTH.getId();
                 case 2 -> Direction.WEST.getId();
                 case 3 -> Direction.SOUTH.getId();
+                default -> Direction.NORTH.getId();
+            };
+            case BACK -> switch(cubosphereDirection)
+            {
+                
+                case 0 -> Direction.WEST.getId();
+                case 1 -> Direction.SOUTH.getId();
+                case 2 -> Direction.EAST.getId();
+                case 3 -> Direction.NORTH.getId();
                 default -> Direction.NORTH.getId();
             };
         };
@@ -97,4 +98,8 @@ public final class CubosphereUtils
             default -> 0;
         };
     }
+    
+    public int toRollingcubePositionX(int x) { return x; }
+    public int toRollingcubePositionY(int y) { return y; }
+    public int toRollingcubePositionZ(int z) { return -z; }
 }

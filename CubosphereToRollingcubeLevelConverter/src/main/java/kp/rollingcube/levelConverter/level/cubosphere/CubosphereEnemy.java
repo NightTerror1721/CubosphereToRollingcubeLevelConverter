@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 import kp.rollingcube.levelConverter.level.Direction;
 import kp.rollingcube.levelConverter.level.Enemy;
 import kp.rollingcube.levelConverter.level.EnemyTemplate;
+import kp.rollingcube.levelConverter.level.PositionAndSideAndDirection;
 import kp.rollingcube.levelConverter.level.SideTag;
 import kp.rollingcube.levelConverter.ui.UILogger;
 import kp.rollingcube.levelConverter.utils.LoggerUtils;
@@ -50,7 +51,7 @@ public class CubosphereEnemy extends CubosphereLevelElement
         if(hasInvalidTemplate())
             return null;
         
-        return switch(getTemplate().toLowerCase())
+        var enemy = switch(getTemplate().toLowerCase())
         {
             case "anomaly", "longspiked", "rhombus", "speeder2", "spiked", "tutorialball" -> {
                 var renemy = Enemy.create(EnemyTemplate.GYRO);
@@ -81,6 +82,20 @@ public class CubosphereEnemy extends CubosphereLevelElement
             }
             default -> unknown(logger);
         };
+        
+        if(enemy != null)
+        {
+            enemy.setInitialPosition(PositionAndSideAndDirection.builder()
+                    .x(CubosphereUtils.toRollingcubePositionX(x))
+                    .y(CubosphereUtils.toRollingcubePositionY(y))
+                    .z(CubosphereUtils.toRollingcubePositionZ(z))
+                    .side(side)
+                    .direction(direction)
+                    .build()
+            );
+        }
+        
+        return enemy;
     }
     
     

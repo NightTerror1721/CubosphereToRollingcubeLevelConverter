@@ -196,9 +196,9 @@ public class CubosphereBlock extends CubosphereLevelElement
             default -> unknown(logger);
         };
         
-        rblock.setX(x);
-        rblock.setY(y);
-        rblock.setZ(z);
+        rblock.setX(CubosphereUtils.toRollingcubePositionX(x));
+        rblock.setY(CubosphereUtils.toRollingcubePositionY(y));
+        rblock.setZ(CubosphereUtils.toRollingcubePositionZ(z));
         
         up.toRollingcubeSide(rblock, logger);
         down.toRollingcubeSide(rblock, logger);

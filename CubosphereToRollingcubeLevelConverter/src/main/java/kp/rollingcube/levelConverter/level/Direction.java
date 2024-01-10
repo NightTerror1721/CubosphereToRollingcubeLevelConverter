@@ -30,7 +30,7 @@ public enum Direction
         if(directionId <= 0)
             return NORTH;
         
-        return switch((directionId - 1) % 4)
+        return switch(directionId % 4)
         {
             case 0 -> NORTH;
             case 1 -> EAST;

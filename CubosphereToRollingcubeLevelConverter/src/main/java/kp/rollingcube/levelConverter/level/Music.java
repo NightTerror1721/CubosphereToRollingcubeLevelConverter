@@ -42,7 +42,9 @@ public enum Music
     BONUS2("Bonus2", "12_-_bonus_2"),
     BONUS3("Bonus3", "13_-_bonus_3"),
     KULA_BETA("KulaBeta", "15_-_beta"),
-    KULA_HIDDEN("KulaHidden", "14_-_hidden_track");
+    VOLCANO("Volcano", "Mindmangler"),
+    DREAM("Dream", "14_-_hidden_track"),
+    NIGHT("Night", "Cave Ambient 2", "Temple of Groovy");
         
     public static final @NonNull Music DEFAULT = EGYPT;
     

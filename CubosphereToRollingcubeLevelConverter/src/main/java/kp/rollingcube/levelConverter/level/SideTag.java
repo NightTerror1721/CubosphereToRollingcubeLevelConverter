@@ -60,9 +60,26 @@ public enum SideTag
             case 1 -> DOWN;
             case 2 -> RIGHT;
             case 3 -> LEFT;
-            case 4 -> FRONT;
-            case 5 -> BACK;
+            case 4 -> BACK;
+            case 5 -> FRONT;
             default -> UP;
+        };
+    }
+    
+    public static @NonNull SideTag fromCubosphereString(String str)
+    {
+        if(str == null)
+            return SideTag.UP;
+        
+        return switch(str.toLowerCase())
+        {
+            case "up" -> SideTag.UP;
+            case "down" -> SideTag.DOWN;
+            case "left" -> SideTag.RIGHT;
+            case "right" -> SideTag.LEFT;
+            case "front" -> SideTag.BACK;
+            case "back" -> SideTag.FRONT;
+            default -> SideTag.UP;
         };
     }
     

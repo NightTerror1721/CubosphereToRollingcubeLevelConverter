@@ -148,7 +148,7 @@ public class CubosphereSide extends CubosphereLevelElement
             case "teleport" -> {
                 var rside = rblock.changeSide(tag, BlockTemplate.TELEPORT);
                 
-                int activated = getPropertyBoolean("StartActive") ? 1 : 0;
+                int activated = getPropertyBoolean("StartActive") ? 0 : 1;
                 
                 rside.setPropertyEnumOrdinal("Activated", activated);
                 rside.setPropertyEnumOrdinal("Color", CubosphereUtils.toRollingcubeColorId(getPropertyInteger("Color")));

@@ -454,7 +454,7 @@ public class LevelLoaderContext
     private void vectorIndexSet(Table table, Number[] vector, int vectorIndex)
     {
         int tableIndex = vectorIndex + 1;
-        if(table.rawlen() <= tableIndex)
+        if(table.rawlen() < tableIndex)
         {
             warn("Malformed vertor creation");
             return;
@@ -470,16 +470,7 @@ public class LevelLoaderContext
         if(str == null)
             return SideTag.UP;
         
-        return switch(str.toString().toLowerCase())
-        {
-            case "up" -> SideTag.UP;
-            case "down" -> SideTag.DOWN;
-            case "left" -> SideTag.RIGHT;
-            case "right" -> SideTag.LEFT;
-            case "front" -> SideTag.FRONT;
-            case "back" -> SideTag.BACK;
-            default -> SideTag.UP;
-        };
+        return SideTag.fromCubosphereString(str.toString());
     }
     
     private static @NonNull SideId decodeSideId(Number sideIdNum)

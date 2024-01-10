@@ -37,7 +37,9 @@ public enum Theme
     HAZE("Haze_Remastered"),
     MARS("Mars_Remastered", "mars"),
     CHESS("Chess", "chess"),
-    NIGHT("Night", "night");
+    NIGHT("Night", "night"),
+    VOLCANO("Volcano", "hell"),
+    DREAM("Dream", "dreams");
     
     public static final @NonNull Theme DEFAULT = EGYPT;
     

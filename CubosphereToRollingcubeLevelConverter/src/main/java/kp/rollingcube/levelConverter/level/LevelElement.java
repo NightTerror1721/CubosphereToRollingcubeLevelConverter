@@ -15,6 +15,7 @@ import lombok.NonNull;
  */
 abstract class LevelElement<T extends Template>
 {
+    @JsonInclude(value = JsonInclude.Include.CUSTOM, valueFilter = Template.JsonIncludeDefaultFilter.class)
     @Getter private final @NonNull T template;
     
     @JsonInclude(value = JsonInclude.Include.NON_EMPTY, content = JsonInclude.Include.NON_EMPTY)

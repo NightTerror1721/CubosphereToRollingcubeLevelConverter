@@ -371,9 +371,9 @@ public class LevelLoaderContext
     
     private void setBallInitialPosition(Number[] positions)
     {
-        level.setBallInitialX(positions[0].intValue() / 20);
-        level.setBallInitialY(positions[1].intValue() / 20);
-        level.setBallInitialZ(positions[2].intValue() / 20);
+        level.setBallInitialX(positions[0].intValue() / 40);
+        level.setBallInitialY(positions[1].intValue() / 40);
+        level.setBallInitialZ(positions[2].intValue() / 40);
     }
     
     private void setBallInitialPosition(Table positions)

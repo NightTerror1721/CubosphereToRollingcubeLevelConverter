@@ -156,9 +156,9 @@ public final class CubosphereLevel
         
         level.setBallTemplate(parseBallTemplate(logger));
         level.setInitialPosition(PositionAndSideAndDirection.builder()
-                .x(ballInitialX)
-                .y(ballInitialY)
-                .z(ballInitialZ)
+                .x(CubosphereUtils.toRollingcubePositionX(ballInitialX))
+                .y(CubosphereUtils.toRollingcubePositionY(ballInitialY))
+                .z(CubosphereUtils.toRollingcubePositionZ(ballInitialZ))
                 .side(ballInitialSide)
                 .direction(ballInitialDirection)
                 .build()

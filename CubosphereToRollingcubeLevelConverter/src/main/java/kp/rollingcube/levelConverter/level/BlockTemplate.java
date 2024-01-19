@@ -92,6 +92,10 @@ public enum BlockTemplate implements Template
             PropertyInfo.ofFloat("Speed", 3),
             PropertyInfo.ofFloat("DelayTime", 0.82f)
     ),
+    PORTAL_EXIT("PortalExit", false, false,
+            colorProperty("Color", 0),
+            PropertyInfo.ofEnum("Direction", 0, "North", "East", "South", "West")
+    ),
     BLINKING("Blinking", true, false,
             PropertyInfo.ofFloat("TimeActivated", 1.2f),
             PropertyInfo.ofFloat("TimeDeactivated", 1.2f),
@@ -214,19 +218,6 @@ public enum BlockTemplate implements Template
     
     private static PropertyInfo colorProperty(String name, int defaultIndex)
     {
-        return PropertyInfo.ofEnum(name, defaultIndex,
-                "Red",
-                "Blue",
-                "Green",
-                "Yellow",
-                "Cyan",
-                "Orange",
-                "Violet",
-                "Magenta",
-                "Turquoise",
-                "Lime",
-                "Salmon",
-                "White"
-        );
+        return Template.Utils.colorProperty(name, defaultIndex);
     }
 }

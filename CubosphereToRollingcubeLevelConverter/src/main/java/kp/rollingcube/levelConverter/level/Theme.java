@@ -39,7 +39,8 @@ public enum Theme
     CHESS("Chess", "chess"),
     NIGHT("Night", "night"),
     VOLCANO("Volcano", "hell"),
-    DREAM("Dream", "dreams");
+    DREAM("Dream", "dreams"),
+    AURORA("Aurora", "aurora");
     
     public static final @NonNull Theme DEFAULT = EGYPT;
     

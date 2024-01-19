@@ -3,6 +3,7 @@ package kp.rollingcube.levelConverter.level;
 import java.util.Map;
 import kp.rollingcube.levelConverter.level.properties.PropertyInfo;
 import lombok.NonNull;
+import lombok.experimental.UtilityClass;
 
 /**
  *
@@ -57,6 +58,28 @@ public interface Template
         public int hashCode() {
             int hash = 5;
             return hash;
+        }
+    }
+    
+    @UtilityClass
+    class Utils
+    {
+        public static PropertyInfo colorProperty(String name, int defaultIndex)
+        {
+            return PropertyInfo.ofEnum(name, defaultIndex,
+                    "Red",
+                    "Blue",
+                    "Green",
+                    "Yellow",
+                    "Cyan",
+                    "Orange",
+                    "Violet",
+                    "Magenta",
+                    "Turquoise",
+                    "Lime",
+                    "Salmon",
+                    "White"
+            );
         }
     }
 }

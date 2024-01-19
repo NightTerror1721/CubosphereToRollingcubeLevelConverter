@@ -5,8 +5,6 @@ import kp.rollingcube.levelConverter.level.BlockTemplate;
 import kp.rollingcube.levelConverter.level.Side;
 import kp.rollingcube.levelConverter.level.SideId;
 import kp.rollingcube.levelConverter.level.SideTag;
-import kp.rollingcube.levelConverter.ui.UILogger;
-import kp.rollingcube.levelConverter.utils.LoggerUtils;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -58,12 +56,12 @@ public class CubosphereSide extends CubosphereLevelElement
     }
     
     
-    final void toRollingcubeSide(@NonNull Block rblock, UILogger logger)
+    final void toRollingcubeSide(@NonNull Block rblock, @NonNull CubosphereLevelConversionData data)
     {
         switch(getTemplate().toLowerCase())
         {
-            case "aircondition" -> unknown(rblock, logger);
-            case "breakclock" -> unknown(rblock, logger);
+            case "aircondition" -> unknown(rblock, data);
+            case "breakclock" -> unknown(rblock, data);
             case "breaking1" -> changeToInvalidSide(rblock); // block only //
             case "button" -> {
                 var rside = rblock.changeSide(tag, BlockTemplate.BUTTON);
@@ -92,7 +90,7 @@ public class CubosphereSide extends CubosphereLevelElement
             case "fire" -> rblock.changeSide(tag, BlockTemplate.BURNED);
             case "fspikes" -> rblock.changeSide(tag, BlockTemplate.STATIC_SPIKES);
             case "ghost" -> changeToInvalidSide(rblock); // block only //
-            case "hspikes" -> unknown(rblock, logger);
+            case "hspikes" -> unknown(rblock, data);
             case "icy1" -> rblock.changeSide(tag, BlockTemplate.ICY);
             case "invis1" -> changeToInvalidSide(rblock); // block only //
             case "invis2" -> changeToInvalidSide(rblock); // block only //
@@ -108,21 +106,21 @@ public class CubosphereSide extends CubosphereLevelElement
                 rside.setPropertyBoolean("Activated", getPropertyBoolean("StartActive"));
                 rside.setPropertyEnumOrdinal("NumOfBeams", 1);
             }
-            case "lightbarrier" -> unknown(rblock, logger);
-            case "magnet" -> unknown(rblock, logger);
+            case "lightbarrier" -> unknown(rblock, data);
+            case "magnet" -> unknown(rblock, data);
             case "normal1" -> rblock.changeSide(tag, BlockTemplate.NORMAL);
-            case "oil" -> unknown(rblock, logger);
+            case "oil" -> unknown(rblock, data);
             case "onedir" -> {
                 var rside = rblock.changeSide(tag, BlockTemplate.ONE_WAY);
                 rside.setPropertyEnumOrdinal("Direction", CubosphereUtils.toRollingcubeDirection(getPropertyInteger("Rotation"), tag));
             }
-            case "onedirtoggle" -> unknown(rblock, logger);
+            case "onedirtoggle" -> unknown(rblock, data);
             case "phaser" -> changeToInvalidSide(rblock); // block only //
             case "plate" -> {
                 var rside = rblock.changeSide(tag, BlockTemplate.PRESSURE_PLATE);
                 rside.setPropertyEnumOrdinal("Color", CubosphereUtils.toRollingcubeColorId(getPropertyInteger("Color")));
             }
-            case "power" -> unknown(rblock, logger);
+            case "power" -> unknown(rblock, data);
             case "rotate" -> {
                 var rside = rblock.changeSide(tag, BlockTemplate.ROTATOR);
                 
@@ -144,7 +142,16 @@ public class CubosphereSide extends CubosphereLevelElement
                 rside.setPropertyEnumOrdinal("Activated", activated);
                 rside.setPropertyEnumOrdinal("Color", CubosphereUtils.toRollingcubeColorId(getPropertyInteger("Color")));
             }
-            case "tele_target" -> unknown(rblock, logger);
+            case "tele_target" -> {
+                var rside = rblock.changeSide(tag, BlockTemplate.PORTAL_EXIT);
+                
+                int portalsCount = Math.abs(data.getPortalExitCount()) % CubosphereUtils.COLORS_COUNT;
+                
+                rside.setPropertyEnumOrdinal("Color", portalsCount);
+                rside.setPropertyEnumOrdinal("Direction", 0);
+                
+                data.increasePortalExitCount();
+            }
             case "teleport" -> {
                 var rside = rblock.changeSide(tag, BlockTemplate.TELEPORT);
                 
@@ -159,17 +166,17 @@ public class CubosphereSide extends CubosphereLevelElement
             case "toggleblock" -> changeToInvalidSide(rblock); // block only //
             case "tramp" -> rblock.changeSide(tag, BlockTemplate.TRAMPOLINE);
             case "tramphigh" -> rblock.changeSide(tag, BlockTemplate.VENT);
-            case "tspikes" -> unknown(rblock, logger);
+            case "tspikes" -> unknown(rblock, data);
             case "warptunnel" -> changeToInvalidSide(rblock); // block only //
             case "" -> changeToInvalidSide(rblock);
-            default -> unknown(rblock, logger);
+            default -> unknown(rblock, data);
         }
         
         if(hasItem())
         {
             Side rside = rblock.getSide(tag);
             if(rside.canHasItem())
-                rside.setItem(item.toRollingcubeItem(logger));
+                rside.setItem(item.toRollingcubeItem(data));
         }
     }
     
@@ -180,9 +187,9 @@ public class CubosphereSide extends CubosphereLevelElement
             rblock.changeSide(tag, BlockTemplate.NULL);
     }
     
-    private void unknown(@NonNull Block rblock, UILogger logger)
+    private void unknown(@NonNull Block rblock, @NonNull CubosphereLevelConversionData data)
     {
-        LoggerUtils.warn(logger, "Side template '%s' not exists in Rollingcube. Replaced by '%s'", getTemplate().toLowerCase(), rblock.getTemplate());
+        data.warn("Side template '%s' not exists in Rollingcube. Replaced by '%s'", getTemplate().toLowerCase(), rblock.getTemplate());
         changeToInvalidSide(rblock);
     }
 }

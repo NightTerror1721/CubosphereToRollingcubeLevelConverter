@@ -57,7 +57,10 @@ public enum ItemTemplate implements Template
             PropertyInfo.ofInteger("Seconds", 15),
             PropertyInfo.ofBoolean("Additive", false)
     ),
-    SLOW_MOTION("SlowMotion");
+    SLOW_MOTION("SlowMotion"),
+    PORTAL_ENTRANCE("PortalEntrance",
+            colorProperty("Color", 0)
+    );
     
     public static final @NonNull ItemTemplate DEFAULT = NO_ITEM;
     
@@ -153,5 +156,12 @@ public enum ItemTemplate implements Template
             
             return fromRollingcubeKey(node.asText());
         }
+    }
+    
+    
+    
+    private static PropertyInfo colorProperty(String name, int defaultIndex)
+    {
+        return Template.Utils.colorProperty(name, defaultIndex);
     }
 }

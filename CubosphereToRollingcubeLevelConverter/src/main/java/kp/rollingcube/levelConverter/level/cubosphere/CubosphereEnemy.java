@@ -6,8 +6,6 @@ import kp.rollingcube.levelConverter.level.Enemy;
 import kp.rollingcube.levelConverter.level.EnemyTemplate;
 import kp.rollingcube.levelConverter.level.PositionAndSideAndDirection;
 import kp.rollingcube.levelConverter.level.SideTag;
-import kp.rollingcube.levelConverter.ui.UILogger;
-import kp.rollingcube.levelConverter.utils.LoggerUtils;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -46,7 +44,7 @@ public class CubosphereEnemy extends CubosphereLevelElement
     
     
     
-    public final Enemy toRollingcubeEnemy(UILogger logger)
+    public final Enemy toRollingcubeEnemy(@NonNull CubosphereLevelConversionData data)
     {
         if(hasInvalidTemplate())
             return null;
@@ -72,7 +70,7 @@ public class CubosphereEnemy extends CubosphereLevelElement
                 renemy.setPropertyBoolean("TiedToPlane", getPropertyBoolean("TiedToPlane"));
                 yield renemy;
             }
-            case "jumper" -> unknown(logger);
+            case "jumper" -> unknown(data);
             case "randomwalker" -> {
                 var renemy = Enemy.create(EnemyTemplate.RANDOM_WALKER);
                 renemy.setPropertyFloat("Speed", getPropertyFloat("Speed"));
@@ -80,7 +78,7 @@ public class CubosphereEnemy extends CubosphereLevelElement
                 renemy.setPropertyEnumOrdinal("SideRestriction", 0);
                 yield renemy;
             }
-            default -> unknown(logger);
+            default -> unknown(data);
         };
         
         if(enemy != null)
@@ -111,9 +109,9 @@ public class CubosphereEnemy extends CubosphereLevelElement
                 .collect(Collectors.joining());
     }
     
-    private Enemy unknown(UILogger logger)
+    private Enemy unknown(@NonNull CubosphereLevelConversionData data)
     {
-        LoggerUtils.warn(logger, "Enemy '%s' not exists in Rollingcube. Replaced by no-enemy", getTemplate().toLowerCase());
+        data.warn("Enemy '%s' not exists in Rollingcube. Replaced by no-enemy", getTemplate().toLowerCase());
         return null;
     }
 }

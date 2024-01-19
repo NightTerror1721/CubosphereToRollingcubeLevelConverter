@@ -12,6 +12,8 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public final class CubosphereUtils
 {   
+    public int COLORS_COUNT = 12;
+    
     public int toRollingcubeColorId(int cubosphereColorId)
     {
         return switch(cubosphereColorId)

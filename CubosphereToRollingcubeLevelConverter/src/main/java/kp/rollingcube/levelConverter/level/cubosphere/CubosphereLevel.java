@@ -146,6 +146,7 @@ public final class CubosphereLevel
     
     public final @NonNull Level toRollingcubeLevel(UILogger logger)
     {
+        var data = CubosphereLevelConversionData.of(logger);
         var level = new Level();
         level.setVersion(Version.CURRENT_LEVEL_VERSION);
         level.setTheme(parseTheme(logger));
@@ -164,8 +165,8 @@ public final class CubosphereLevel
                 .build()
         );
         
-        blocks.forEach(block -> level.createNewBlock(block, logger));
-        enemies.forEach(enemy -> level.createNewEnemy(enemy, logger));
+        blocks.forEach(block -> level.createNewBlock(block, data));
+        enemies.forEach(enemy -> level.createNewEnemy(enemy, data));
         
         return level;
     }

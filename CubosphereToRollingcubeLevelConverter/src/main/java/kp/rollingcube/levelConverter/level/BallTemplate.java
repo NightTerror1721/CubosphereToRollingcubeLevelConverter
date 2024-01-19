@@ -43,6 +43,7 @@ public enum BallTemplate implements Template
     CHESS("Chess", "chess", "chess2", "chess3"),
     VOLCANO("Volcano", "eyeball"),
     NIGHT("Night", "night", "night2", "night3"),
+    AURORA("Aurora", "rune", "rune2", "rune3"),
     BONUS_1("Bonus1", "kwbonus1"),
     BONUS_2("Bonus2", "kwbonus2"),
     BONUS_3("Bonus3", "kwbonus3"),

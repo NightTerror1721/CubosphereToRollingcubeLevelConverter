@@ -56,7 +56,14 @@ public class CubosphereItem extends CubosphereLevelElement
             case "donut" -> Item.create(ItemTemplate.FRUIT);
             case "glasses" -> Item.create(ItemTemplate.GLASSES);
             case "goldenletter" -> unknown(data);
-            case "gravity" -> unknown(data);
+            case "gravity" -> {
+                var ritem = Item.create(ItemTemplate.GRAVITY_ARROW);
+                
+                int direction = Math.abs(getPropertyInteger("Direction")) % 6;
+                ritem.setPropertyEnumOrdinal("Direction", CubosphereUtils.toRollingcubeGravityDirection(direction));
+                
+                yield ritem;
+            }
             case "hourglass" -> Item.create(ItemTemplate.HOURGLASS);
             case "icebility" -> unknown(data);
             case "invert" -> unknown(data);

@@ -111,7 +111,13 @@ public enum BlockTemplate implements Template
             colorProperty("Color", 0),
             PropertyInfo.ofBoolean("Activated", true)
     ),
-    SAND("Sand", false, true);
+    SAND("Sand", false, true),
+    MAGNET("Magnet", false, false,
+            colorProperty("Color", 0),
+            PropertyInfo.ofInteger("BeamDistance", 3),
+            PropertyInfo.ofEnum("State", 2, "Off", "MagnetismOnly", "Full")
+    ),
+    OIL("Oil", false, true);
     
     public static final @NonNull BlockTemplate DEFAULT = NORMAL;
     public static final @NonNull BlockTemplate NULL = NO_BLOCK;

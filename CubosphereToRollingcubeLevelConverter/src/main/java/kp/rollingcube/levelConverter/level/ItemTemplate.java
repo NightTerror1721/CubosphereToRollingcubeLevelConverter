@@ -35,6 +35,9 @@ public enum ItemTemplate implements Template
     FRUIT("Fruit"),
     BLUE_DIAMOND("BlueDiamond"),
     RED_DIAMOND("RedDiamond"),
+    GRAVITY_ARROW("GravityArrow",
+            PropertyInfo.ofEnum("Direction", 0, "Up", "Down", "Left", "Right" , "Front", "Back")
+    ),
     GREEN_DIAMOND("GreenDiamond"),
     ORANGE_DIAMOND("OrangeDiamond"),
     WHITE_DIAMOND("WhiteDiamond"),
@@ -54,6 +57,10 @@ public enum ItemTemplate implements Template
     JUMP_PLUS("JumpPlus"),
     JUMP_MINUS("JumpMinus"),
     GLASSES("Glasses",
+            PropertyInfo.ofInteger("Seconds", 15),
+            PropertyInfo.ofBoolean("Additive", false)
+    ),
+    SHIELD("Shield",
             PropertyInfo.ofInteger("Seconds", 15),
             PropertyInfo.ofBoolean("Additive", false)
     ),

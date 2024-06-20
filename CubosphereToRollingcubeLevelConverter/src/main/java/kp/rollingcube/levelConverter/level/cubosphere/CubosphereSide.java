@@ -107,9 +107,35 @@ public class CubosphereSide extends CubosphereLevelElement
                 rside.setPropertyEnumOrdinal("NumOfBeams", 1);
             }
             case "lightbarrier" -> unknown(rblock, data);
-            case "magnet" -> unknown(rblock, data);
+            case "magnet" -> {
+                var rside = rblock.changeSide(tag, BlockTemplate.MAGNET);
+                
+                int distance = Math.clamp(getPropertyInteger("Distance"), 0, 100);
+                boolean bistate = getPropertyBoolean("TwoState");
+                int startStrength = getPropertyInteger("StartStrength");
+                
+                rside.setPropertyInteger("BeamDistance", Math.max(0, distance));
+                rside.setPropertyEnumOrdinal("Color", CubosphereUtils.toRollingcubeColorId(getPropertyInteger("Color")));
+                
+                if(distance == 0)
+                    rside.setPropertyEnumOrdinal("State", startStrength % 2);
+                else if(bistate)
+                {
+                    if(distance > 0)
+                        rside.setPropertyEnumOrdinal("State", startStrength % 3);
+                    else
+                        rside.setPropertyEnumOrdinal("State", 2 - (startStrength % 2));
+                }
+                else
+                {
+                    if(distance > 0)
+                        rside.setPropertyEnumOrdinal("State", 1 + startStrength % 2);
+                    else
+                        rside.setPropertyEnumOrdinal("State", 2 + startStrength % 2);
+                }
+            }
             case "normal1" -> rblock.changeSide(tag, BlockTemplate.NORMAL);
-            case "oil" -> unknown(rblock, data);
+            case "oil" -> rblock.changeSide(tag, BlockTemplate.OIL);
             case "onedir" -> {
                 var rside = rblock.changeSide(tag, BlockTemplate.ONE_WAY);
                 rside.setPropertyEnumOrdinal("Direction", CubosphereUtils.toRollingcubeDirection(getPropertyInteger("Rotation"), tag));

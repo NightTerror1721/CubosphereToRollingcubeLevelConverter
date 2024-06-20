@@ -101,6 +101,20 @@ public final class CubosphereUtils
         };
     }
     
+    public int toRollingcubeGravityDirection(int cubosphereGravityDirection)
+    {
+        return switch(cubosphereGravityDirection)
+        {
+            case 0 -> 0;
+            case 1 -> 3;
+            case 2 -> 4;
+            case 3 -> 2;
+            case 4 -> 1;
+            case 5 -> 5;
+            default -> 0;
+        };
+    }
+    
     public int toRollingcubePositionX(int x) { return x; }
     public int toRollingcubePositionY(int y) { return y; }
     public int toRollingcubePositionZ(int z) { return -z; }

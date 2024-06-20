@@ -154,9 +154,9 @@ public class CubosphereBlock extends CubosphereLevelElement
             case "knife" -> Block.create(BlockTemplate.PATTERN_SPIKES);
             case "laser" -> Block.create(BlockTemplate.LASER);
             case "lightbarrier" -> unknown(data);
-            case "magnet" -> unknown(data);
+            case "magnet" -> Block.create(BlockTemplate.MAGNET);
             case "normal1" -> Block.create(BlockTemplate.NORMAL);
-            case "oil" -> unknown(data);
+            case "oil" -> Block.create(BlockTemplate.SAND);
             case "onedir" -> Block.create(BlockTemplate.ONE_WAY);
             case "onedirtoggle" -> unknown(data);
             case "phaser" -> {
@@ -168,7 +168,7 @@ public class CubosphereBlock extends CubosphereLevelElement
                 float phase = Math.clamp(getPropertyFloat("Phase"), 0, 1);
                 
                 float totalTime = timeActivated + timeBlending + timeDeactivated + timeBlending;
-                phase = phase * totalTime;
+                phase *= totalTime;
                 
                 blk.setPropertyFloat("TimeActivated", timeActivated);
                 blk.setPropertyFloat("TimeDeactivated", timeDeactivated);

@@ -1,9 +1,15 @@
 package kp.rollingcube.levelConverter.level.cubosphere;
 
 import kp.rollingcube.levelConverter.level.Direction;
+import kp.rollingcube.levelConverter.level.EnemyInteraction;
+import kp.rollingcube.levelConverter.level.EnemyInteractionType;
 import kp.rollingcube.levelConverter.level.SideTag;
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;
+
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -40,9 +46,9 @@ public final class CubosphereUtils
             case DOWN -> switch(cubosphereDirection)
             {
                 case 0 -> Direction.SOUTH.getId();
-                case 1 -> Direction.WEST.getId();
+                case 1 -> Direction.EAST.getId();
                 case 2 -> Direction.NORTH.getId();
-                case 3 -> Direction.EAST.getId();
+                case 3 -> Direction.WEST.getId();
                 default -> Direction.NORTH.getId();
             };
             case LEFT -> switch(cubosphereDirection)
@@ -101,21 +107,113 @@ public final class CubosphereUtils
         };
     }
     
-    public int toRollingcubeGravityDirection(int cubosphereGravityDirection)
+    public int toRollingcubeGravityDirection(CubosphereSide side, int cubosphereGravityDirection)
     {
-        return switch(cubosphereGravityDirection)
+        if(side == null)
+            return 0;
+
+        cubosphereGravityDirection = Math.abs(cubosphereGravityDirection) % 6;
+        return switch(side.getTag())
         {
-            case 0 -> 0;
-            case 1 -> 3;
-            case 2 -> 4;
-            case 3 -> 2;
-            case 4 -> 1;
-            case 5 -> 5;
-            default -> 0;
+            case UP -> switch(cubosphereGravityDirection)
+            {
+                case 0 -> 0;
+                case 1 -> 3;
+                case 2 -> 5;
+                case 3 -> 2;
+                case 4 -> 4;
+                case 5 -> 1;
+                default -> 0;
+            };
+            case DOWN -> switch(cubosphereGravityDirection)
+            {
+                case 0 -> 1;
+                case 1 -> 2;
+                case 2 -> 5;
+                case 3 -> 3;
+                case 4 -> 4;
+                case 5 -> 0;
+                default -> 0;
+            };
+            case RIGHT -> switch(cubosphereGravityDirection)
+            {
+                case 0 -> 3;
+                case 1 -> 0;
+                case 2 -> 4;
+                case 3 -> 1;
+                case 4 -> 5;
+                case 5 -> 2;
+                default -> 0;
+            };
+            case LEFT -> switch(cubosphereGravityDirection)
+            {
+                case 0 -> 2;
+                case 1 -> 0;
+                case 2 -> 5;
+                case 3 -> 1;
+                case 4 -> 4;
+                case 5 -> 3;
+                default -> 0;
+            };
+            case BACK -> switch(cubosphereGravityDirection)
+            {
+                case 0 -> 5;
+                case 1 -> 0;
+                case 2 -> 2;
+                case 3 -> 1;
+                case 4 -> 3;
+                case 5 -> 4;
+                default -> 0;
+            };
+            case FRONT -> switch(cubosphereGravityDirection)
+            {
+                case 0 -> 4;
+                case 1 -> 0;
+                case 2 -> 3;
+                case 3 -> 1;
+                case 4 -> 2;
+                case 5 -> 5;
+                default -> 0;
+            };
         };
     }
     
     public int toRollingcubePositionX(int x) { return x; }
     public int toRollingcubePositionY(int y) { return y; }
     public int toRollingcubePositionZ(int z) { return -z; }
+
+    private final Set<Character> CUBOSPHERE_INTERACTIONS = Set.of('s', 'i', 't', 'p', 'b', 'f', 'l', 'o');
+    public Set<EnemyInteractionType> toRollingcubeInteraction(char interactionSymbol)
+    {
+        return switch(Character.toLowerCase(interactionSymbol))
+        {
+            case 's' -> Set.of(EnemyInteractionType.BUTTONS);
+            case 'i' -> Set.of(EnemyInteractionType.ICE);
+            case 't' -> Set.of(EnemyInteractionType.TRAMPS_AND_VENTS);
+            case 'p' -> Set.of(EnemyInteractionType.SPIKES, EnemyInteractionType.TELEPORTS);
+            case 'b' -> Set.of(EnemyInteractionType.BREAKING_BLOCKS);
+            case 'f' -> Set.of(EnemyInteractionType.FIRE);
+            case 'l' -> Set.of(EnemyInteractionType.LASERS);
+            case 'o' -> Set.of(EnemyInteractionType.DIRECTION_RESTRICTIONS);
+            default -> Set.of();
+        };
+    }
+
+    public void parseAndSetInteractions(String cubosphereInteractions, EnemyInteraction rollingcubeInteractions)
+    {
+        if (cubosphereInteractions == null || cubosphereInteractions.isBlank())
+            cubosphereInteractions = "";
+
+        Set<Character> cubosphereInteractionSymbols = cubosphereInteractions.chars()
+                .mapToObj(cp -> (char)cp)
+                .collect(Collectors.toSet());
+
+        for (var cubosphereInteractionSymbol : CUBOSPHERE_INTERACTIONS)
+        {
+            var interactionTypes = toRollingcubeInteraction(cubosphereInteractionSymbol);
+            var enabled = cubosphereInteractionSymbols.contains(cubosphereInteractionSymbol);
+            for (var type : interactionTypes)
+                rollingcubeInteractions.setInteraction(type, enabled);
+        }
+    }
 }

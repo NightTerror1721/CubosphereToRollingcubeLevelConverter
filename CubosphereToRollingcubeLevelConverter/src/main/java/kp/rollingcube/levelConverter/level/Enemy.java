@@ -3,18 +3,38 @@ package kp.rollingcube.levelConverter.level;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NonNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Collection;
 
 /**
  *
  * @author Marc
  */
-public final class Enemy extends LevelElement<EnemyTemplate>
+@Getter
+public final class Enemy extends Actor<EnemyTemplate>
 {
-    @Getter private final PositionAndSideAndDirection initialPosition = new PositionAndSideAndDirection();
-    
+    private final EnemyInteraction interactions = new EnemyInteraction();
+
     private Enemy(@NonNull EnemyTemplate template)
     {
         super(template);
+        interactions.setInitialInteractions(template.getDefaultInteractions());
+    }
+
+    public void setInteractions(@Nullable EnemyInteraction interactions)
+    {
+        if (interactions == null)
+            this.interactions.disableAllInteractions();
+        else
+            this.interactions.set(interactions);
+    }
+
+    @JsonIgnore
+    @Override
+    public boolean mayAppearInJson()
+    {
+        return super.mayAppearInJson() && !interactions.isEmpty();
     }
     
     public static @NonNull Enemy create(EnemyTemplate template)
@@ -24,15 +44,4 @@ public final class Enemy extends LevelElement<EnemyTemplate>
         
         return new Enemy(template);
     }
-    
-    
-    public final void setInitialPosition(@NonNull PositionAndSideAndDirection initialPosition)
-    {
-        this.initialPosition.copyFrom(initialPosition);
-    }
-    
-    @JsonIgnore
-    public final boolean mayAppearInJson()
-    {
-        return !hasNullTemplate();   
-    }}
+}

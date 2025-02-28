@@ -1,45 +1,25 @@
 package kp.rollingcube.levelConverter.level.cubosphere;
 
 import java.util.stream.Collectors;
-import kp.rollingcube.levelConverter.level.Direction;
 import kp.rollingcube.levelConverter.level.Enemy;
 import kp.rollingcube.levelConverter.level.EnemyTemplate;
 import kp.rollingcube.levelConverter.level.PositionAndSideAndDirection;
-import kp.rollingcube.levelConverter.level.SideTag;
-import lombok.Getter;
 import lombok.NonNull;
-import lombok.Setter;
 
 /**
  *
  * @author Marc
  */
-public class CubosphereEnemy extends CubosphereLevelElement
-{
-    @Getter private final @NonNull EnemyId id;
-    
-    @Getter @Setter private int x = 0;
-    @Getter @Setter private int y = 0;
-    @Getter @Setter private int z = 0;
-    @Getter @Setter private @NonNull SideTag side = SideTag.UP;
-    @Getter @Setter private @NonNull Direction direction = Direction.NORTH;
-    
+public class CubosphereEnemy extends CubosphereActor<EnemyId>
+{   
     private CubosphereEnemy(@NonNull EnemyId id, String template)
     {
-        super(template);
-        this.id = id;
+        super(id, template);
     }
     
     static @NonNull CubosphereEnemy create(@NonNull EnemyId id, String template)
     {
         return new CubosphereEnemy(id, template);
-    }
-    
-    
-    public final void setCubosphereDirection(int direction, @NonNull SideTag sideTag)
-    {
-        var directionId = CubosphereUtils.toRollingcubeDirection(direction, sideTag);
-        setDirection(Direction.fromId(directionId));
     }
     
     
@@ -51,9 +31,15 @@ public class CubosphereEnemy extends CubosphereLevelElement
         
         var enemy = switch(getTemplate().toLowerCase())
         {
-            case "anomaly", "longspiked", "rhombus", "speeder2", "spiked", "tutorialball" -> {
+            case "longspiked", "spiked", "tutorialball" -> {
                 var renemy = Enemy.create(EnemyTemplate.GYRO);
                 renemy.setPropertyString("Path", filterPath(getPropertyString("Movement"), "flr"));
+                renemy.setPropertyFloat("Speed", getPropertyFloat("Speed"));
+                yield renemy;
+            }
+            case "anomaly" -> {
+                var renemy = Enemy.create(EnemyTemplate.ANOMALY);
+                renemy.setPropertyString("Path", filterPath(getPropertyString("Movement"), "flrujshwpm"));
                 renemy.setPropertyFloat("Speed", getPropertyFloat("Speed"));
                 yield renemy;
             }
@@ -61,7 +47,7 @@ public class CubosphereEnemy extends CubosphereLevelElement
                 var renemy = Enemy.create(EnemyTemplate.GEAR);
                 renemy.setPropertyString("Path", filterPath(getPropertyString("Movement"), "flr"));
                 renemy.setPropertyFloat("ForwardSpeed", getPropertyFloat("Speed"));
-                renemy.setPropertyFloat("RotateSpeed", getPropertyFloat("RotationSpeed"));
+                renemy.setPropertyFloat("RotateSpeed", getPropertyFloat("RotationSpeed", 1f));
                 yield renemy;
             }
             case "hunter" -> {
@@ -70,7 +56,24 @@ public class CubosphereEnemy extends CubosphereLevelElement
                 renemy.setPropertyBoolean("TiedToPlane", getPropertyBoolean("TiedToPlane"));
                 yield renemy;
             }
-            case "jumper" -> unknown(data);
+            case "jumper" -> {
+                var renemy = Enemy.create(EnemyTemplate.JUMPER);
+                renemy.setPropertyString("Path", filterPath(getPropertyString("Movement"), "flrujsh"));
+                renemy.setPropertyFloat("Speed", getPropertyFloat("Speed"));
+                yield renemy;
+            }
+            case "rhombus" -> {
+                var renemy = Enemy.create(EnemyTemplate.RHOMBUS);
+                renemy.setPropertyString("Path", filterPath(getPropertyString("Movement"), "flrw"));
+                renemy.setPropertyFloat("Speed", getPropertyFloat("Speed"));
+                yield renemy;
+            }
+            case "speeder2" -> {
+                var renemy = Enemy.create(EnemyTemplate.RHOMBUS);
+                renemy.setPropertyString("Path", filterPath(getPropertyString("Movement"), "flrpm"));
+                renemy.setPropertyFloat("Speed", getPropertyFloat("Speed"));
+                yield renemy;
+            }
             case "randomwalker" -> {
                 var renemy = Enemy.create(EnemyTemplate.RANDOM_WALKER);
                 renemy.setPropertyFloat("Speed", getPropertyFloat("Speed"));
@@ -84,13 +87,15 @@ public class CubosphereEnemy extends CubosphereLevelElement
         if(enemy != null)
         {
             enemy.setInitialPosition(PositionAndSideAndDirection.builder()
-                    .x(CubosphereUtils.toRollingcubePositionX(x))
-                    .y(CubosphereUtils.toRollingcubePositionY(y))
-                    .z(CubosphereUtils.toRollingcubePositionZ(z))
-                    .side(side)
-                    .direction(direction)
+                    .x(CubosphereUtils.toRollingcubePositionX(getX()))
+                    .y(CubosphereUtils.toRollingcubePositionY(getY()))
+                    .z(CubosphereUtils.toRollingcubePositionZ(getZ()))
+                    .side(getSide())
+                    .direction(getDirection())
                     .build()
             );
+
+            CubosphereUtils.parseAndSetInteractions(getPropertyString("Interaction"), enemy.getInteractions());
         }
         
         return enemy;
@@ -104,6 +109,7 @@ public class CubosphereEnemy extends CubosphereLevelElement
                 .collect(Collectors.toSet());
         return path.chars()
                 .mapToObj(Integer::valueOf)
+                .map(cd -> cd == 'd' ? 's' : cd)
                 .filter(availables::contains)
                 .map(cd -> Character.toString((char) cd.intValue()))
                 .collect(Collectors.joining());

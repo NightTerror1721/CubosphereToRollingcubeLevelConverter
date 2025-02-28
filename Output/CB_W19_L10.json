@@ -1,0 +1,855 @@
+{
+  "name" : "",
+  "version" : "1.1",
+  "theme" : "Egypt",
+  "music" : "Egypt",
+  "initialTime" : 60,
+  "maxTime" : 60,
+  "themeMode" : "NORMAL",
+  "blocks" : [ {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 0,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : 0,
+    "z" : 0,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : 0,
+    "z" : 1,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BlueDiamond"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : 0,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -1,
+    "y" : 0,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -1,
+    "y" : 0,
+    "z" : 1,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BlueDiamond"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -1,
+    "y" : 0,
+    "z" : 0,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Breaking",
+    "x" : 0,
+    "y" : 0,
+    "z" : 4
+  }, {
+    "template" : "Breaking",
+    "x" : 0,
+    "y" : 0,
+    "z" : 6
+  }, {
+    "template" : "Breaking",
+    "x" : 0,
+    "y" : 0,
+    "z" : 8
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 10,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Trampoline"
+    }
+  }, {
+    "template" : "Blinking",
+    "properties" : {
+      "TimeActivated" : "2.0",
+      "Phase" : "0.0",
+      "TimeDeactivated" : "2.0",
+      "TimeBlending" : "1.0"
+    },
+    "x" : 0,
+    "y" : 1,
+    "z" : 7
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 13,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "JumpPlus"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : 0,
+    "z" : 13,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : 0,
+    "z" : 14,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : 0,
+    "z" : 15,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 15,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Key"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -1,
+    "y" : 0,
+    "z" : 15,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -1,
+    "y" : 0,
+    "z" : 14,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -1,
+    "y" : 0,
+    "z" : 13,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -2,
+    "z" : 8,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "JumpMinus"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 7,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "StaticSpikes"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -5,
+    "z" : 7,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "StaticSpikes"
+    },
+    "up" : {
+      "template" : "Burned"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -1,
+    "y" : -5,
+    "z" : 7,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Burned"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -1,
+    "y" : -5,
+    "z" : 6,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "GreenDiamond"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -1,
+    "y" : -5,
+    "z" : 5,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Burned"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -5,
+    "z" : 5,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "RetractableSpikes",
+      "properties" : {
+        "Speed" : "1.0",
+        "Phase" : "0.0"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : -5,
+    "z" : 5,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Burned"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : -5,
+    "z" : 6,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "GreenDiamond"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : -5,
+    "z" : 7,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Burned"
+    }
+  }, {
+    "template" : "Icy",
+    "x" : 0,
+    "y" : -5,
+    "z" : 8,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Icy",
+    "x" : 0,
+    "y" : 4,
+    "z" : 6,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "JumpPlus"
+      }
+    },
+    "up" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "JumpPlus"
+      }
+    }
+  }, {
+    "template" : "Icy",
+    "x" : 0,
+    "y" : 4,
+    "z" : 3,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "Key"
+      }
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 24,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Exit",
+      "properties" : {
+        "Secret" : "false",
+        "NextLevel" : ""
+      }
+    }
+  }, {
+    "template" : "Icy",
+    "x" : 0,
+    "y" : 0,
+    "z" : 22,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "JumpMinus"
+      }
+    }
+  }, {
+    "template" : "Icy",
+    "x" : 0,
+    "y" : 0,
+    "z" : 19,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "JumpMinus"
+      }
+    }
+  } ],
+  "balls" : [ {
+    "template" : "Hiro",
+    "initialPosition" : {
+      "x" : 0,
+      "y" : 0,
+      "z" : 2,
+      "side" : 0,
+      "direction" : 0
+    }
+  } ]
+}

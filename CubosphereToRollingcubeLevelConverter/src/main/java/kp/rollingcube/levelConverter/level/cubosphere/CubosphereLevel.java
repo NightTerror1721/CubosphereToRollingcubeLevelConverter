@@ -2,14 +2,10 @@ package kp.rollingcube.levelConverter.level.cubosphere;
 
 import java.util.HashMap;
 import java.util.LinkedList;
-import kp.rollingcube.levelConverter.level.BallTemplate;
 import kp.rollingcube.levelConverter.level.BlockId;
-import kp.rollingcube.levelConverter.level.Direction;
 import kp.rollingcube.levelConverter.level.Level;
 import kp.rollingcube.levelConverter.level.Music;
-import kp.rollingcube.levelConverter.level.PositionAndSideAndDirection;
 import kp.rollingcube.levelConverter.level.SideId;
-import kp.rollingcube.levelConverter.level.SideTag;
 import kp.rollingcube.levelConverter.level.Theme;
 import kp.rollingcube.levelConverter.level.ThemeMode;
 import kp.rollingcube.levelConverter.ui.UILogger;
@@ -32,32 +28,22 @@ public final class CubosphereLevel
     @Getter private int initialTime = 100;
     @Getter private int maxTime = 100;
     
-    @Getter @Setter private @NonNull String ballTemplate = "";
-    @Getter @Setter private int ballInitialX = 0;
-    @Getter @Setter private int ballInitialY = 0;
-    @Getter @Setter private int ballInitialZ = 0;
-    @Getter @Setter private @NonNull SideTag ballInitialSide = SideTag.UP;
-    @Getter @Setter private @NonNull Direction ballInitialDirection = Direction.NORTH;
-    
     private final @NonNull LinkedList<CubosphereBlock> blocks = new LinkedList<>();
     private final @NonNull LinkedList<CubosphereEnemy> enemies = new LinkedList<>();
+    private final @NonNull LinkedList<CubosphereBall> balls = new LinkedList<>();
     
     private final @NonNull BlockId.Generator blockIdGenerator = new BlockId.Generator();
     private final @NonNull ItemId.Generator itemIdGenerator = new ItemId.Generator();
     private final @NonNull EnemyId.Generator enemyIdGenerator = new EnemyId.Generator();
+    private final @NonNull BallId.Generator ballIdGenerator = new BallId.Generator();
     
     private final @NonNull HashMap<ItemId, CubosphereItem> itemsMap = new HashMap<>();
     private final @NonNull HashMap<EnemyId, CubosphereEnemy> enemiesMap = new HashMap<>();
+    private final @NonNull HashMap<BallId, CubosphereBall> ballsMap = new HashMap<>();
     
     
     public final void setInitialTime(int initialTime) { this.initialTime = Math.max(1, initialTime); }
-    public final void setMaxTime(int initialTime) { this.maxTime = Math.max(0, maxTime); }
-    
-    public final void setBallInitialDirection(int direction, @NonNull SideTag sideTag)
-    {
-        var directionId = CubosphereUtils.toRollingcubeDirection(direction, sideTag);
-        setBallInitialDirection(Direction.fromId(directionId));
-    }
+    public final void setMaxTime(int maxTime) { this.maxTime = Math.max(0, maxTime); }
     
     public final @NonNull CubosphereBlock getFirstBlock() { return blocks.getFirst(); }
     public final @NonNull CubosphereBlock getLastBlock() { return blocks.getLast(); }
@@ -90,6 +76,11 @@ public final class CubosphereLevel
     public final CubosphereEnemy getEnemy(@NonNull EnemyId id)
     {
         return enemiesMap.getOrDefault(id, null);
+    }
+    
+    public final CubosphereBall getBall(@NonNull BallId id)
+    {
+        return ballsMap.getOrDefault(id, null);
     }
     
     public final @NonNull CubosphereBlock createNewBlock(String template)
@@ -135,6 +126,14 @@ public final class CubosphereLevel
         return enemy;
     }
     
+    public final CubosphereBall createNewBall(String template)
+    {
+        var ball = CubosphereBall.create(ballIdGenerator.generate(), template);
+        ballsMap.put(ball.getId(), ball);
+        balls.add(ball);
+        return ball;
+    }
+    
     
     public final @NonNull Level toRollingcubeLevel(UILogger logger, String levelName)
     {
@@ -155,18 +154,9 @@ public final class CubosphereLevel
         level.setMaxTime(maxTime);
         level.setThemeMode(ThemeMode.DEFAULT);
         
-        level.setBallTemplate(parseBallTemplate(logger));
-        level.setInitialPosition(PositionAndSideAndDirection.builder()
-                .x(CubosphereUtils.toRollingcubePositionX(ballInitialX))
-                .y(CubosphereUtils.toRollingcubePositionY(ballInitialY))
-                .z(CubosphereUtils.toRollingcubePositionZ(ballInitialZ))
-                .side(ballInitialSide)
-                .direction(ballInitialDirection)
-                .build()
-        );
-        
         blocks.forEach(block -> level.createNewBlock(block, data));
         enemies.forEach(enemy -> level.createNewEnemy(enemy, data));
+        balls.forEach(ball -> level.createNewBall(ball, data));
         
         return level;
     }
@@ -185,13 +175,5 @@ public final class CubosphereLevel
             LoggerUtils.warn(logger, "Music '%s' not exists in Rollingcube. Replaced by '%s'", music, Music.DEFAULT);
         
         return Music.fromKey(music);
-    }
-    
-    private @NonNull BallTemplate parseBallTemplate(UILogger logger)
-    {
-        if(!BallTemplate.existsKey(ballTemplate))
-            LoggerUtils.warn(logger, "Ball template '%s' not exists in Rollingcube. Replaced by '%s'", ballTemplate, BallTemplate.DEFAULT);
-        
-        return BallTemplate.fromKey(ballTemplate);
     }
 }

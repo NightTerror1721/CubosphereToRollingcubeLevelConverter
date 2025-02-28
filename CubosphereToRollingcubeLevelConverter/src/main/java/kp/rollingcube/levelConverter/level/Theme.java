@@ -40,7 +40,23 @@ public enum Theme
     NIGHT("Night", "night"),
     VOLCANO("Volcano", "hell"),
     DREAM("Dream", "dreams"),
-    AURORA("Aurora", "aurora");
+    AURORA("Aurora", "aurora", "frost"),
+    FIERY("Fiery", "fiery"),
+    FAR_EAST("FarEast", "far_east"),
+    SUPERNOVA("Supernova", "spacy"),
+    PERSIA("Persia", "persia"),
+    PEAKS("Peaks", "canyon", "peaks"),
+    SUNSET("Sunset", "sunset"),
+    PIXEL_KINGDOM("PixelKingdom"),
+    WARP_BONUS("WarpBonus", "warpzone"),
+    DARK("Dark", "dark"),
+    RGB("RGB", "green", "red", "blue"),
+    GREECE("Greece", "greece"),
+    GANYMEDE("Ganymede", "ganymede"),
+    CITY("City", "city"),
+    DIGITAL_NETWORK("DigitalNetwork", "pure"),
+    ORBITAL("Orbital", "mecha"),
+    AZURE("Azure", "azure");
     
     public static final @NonNull Theme DEFAULT = EGYPT;
     

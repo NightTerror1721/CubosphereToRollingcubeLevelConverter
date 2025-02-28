@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
 import kp.rollingcube.levelConverter.json.JsonMapper;
+import kp.rollingcube.levelConverter.level.cubosphere.CubosphereBall;
 import kp.rollingcube.levelConverter.level.cubosphere.CubosphereBlock;
 import kp.rollingcube.levelConverter.level.cubosphere.CubosphereEnemy;
 import kp.rollingcube.levelConverter.level.cubosphere.CubosphereLevelConversionData;
@@ -34,26 +35,22 @@ public class Level
     @Getter private int maxTime = 100;
     @Getter @Setter private @NonNull ThemeMode themeMode = ThemeMode.DEFAULT;
     
-    @Getter @Setter private @NonNull BallTemplate ballTemplate = BallTemplate.DEFAULT;
-    @Getter private final PositionAndSideAndDirection initialPosition = new PositionAndSideAndDirection();
-    
     private final @NonNull List<Block> blocks = new LinkedList<>();
     private final @NonNull List<Enemy> enemies = new LinkedList<>();
+    private final @NonNull List<Ball> balls = new LinkedList<>();
     
     
     public final void setInitialTime(int initialTime) { this.initialTime = Math.max(1, initialTime); }
-    public final void setMaxTime(int initialTime) { this.maxTime = Math.max(0, maxTime); }
-    
-    public final void setInitialPosition(@NonNull PositionAndSideAndDirection initialPosition)
-    {
-        this.initialPosition.copyFrom(initialPosition);
-    }
+    public final void setMaxTime(int maxTime) { this.maxTime = Math.max(0, maxTime); }
     
     @JsonIgnore
     public final @NonNull List<Block> getBlocks() { return List.copyOf(blocks); }
     
     @JsonIgnore
     public final @NonNull List<Enemy> getEnemies() { return List.copyOf(enemies); }
+    
+    @JsonIgnore
+    public final @NonNull List<Ball> getBalls() { return List.copyOf(balls); }
     
     
     @JsonGetter("blocks")
@@ -68,6 +65,13 @@ public class Level
     public final @NonNull List<Enemy> getJsonEnemies()
     {
         return enemies.stream().filter(Enemy::mayAppearInJson).toList();
+    }
+    
+    @JsonGetter("balls")
+    @JsonInclude(value = JsonInclude.Include.NON_EMPTY, content = JsonInclude.Include.NON_EMPTY)
+    public final @NonNull List<Ball> getJsonBalls()
+    {
+        return balls.stream().filter(Ball::mayAppearInJson).toList();
     }
     
     
@@ -101,6 +105,14 @@ public class Level
         if(enemy != null)
             enemies.add(enemy);
         return enemy;
+    }
+    
+    public final Ball createNewBall(@NonNull CubosphereBall cball, @NonNull CubosphereLevelConversionData data)
+    {
+        var ball = cball.toRollingcubeEnemy(data);
+        if(ball != null)
+            balls.add(ball);
+        return ball;
     }
     
     

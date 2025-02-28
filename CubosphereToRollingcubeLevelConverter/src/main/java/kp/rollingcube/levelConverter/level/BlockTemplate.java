@@ -46,7 +46,7 @@ public enum BlockTemplate implements Template
                     "8",
                     "9"
     )),
-    RETRACTABLE_SPIKES("RetractableSpikes", false, false,
+    RETRACTABLE_SPIKES("RetractableSpikes", false, true,
             PropertyInfo.ofFloat("Phase", 0),
             PropertyInfo.ofFloat("Speed", 1)
     ),
@@ -59,24 +59,24 @@ public enum BlockTemplate implements Template
     NEAR_INVISIBLE_BLOCK("NearInvisibleBlock", true, true),
     FULL_INVISIBLE_BLOCK("FullInvisibleBlock", true, true),
     TRAMPOLINE("Trampoline", false, false),
-    VENT("Trampoline", false, false),
+    VENT("Vent", false, false),
     BURNED("Burned", false, true),
     ICY("Icy", false, true),
-    TIME_STOP("TimeStop", false, false),
+    TIME_STOP("TimeStop", false, true),
     ROTATOR("Rotator", false, false,
             PropertyInfo.ofEnum("Direction", 0, "Left", "Right")
     ),
-    ONE_WAY("OneWay", false, false,
+    ONE_WAY("OneWay", false, true,
             PropertyInfo.ofEnum("Direction", 0, "North", "East", "South", "West")
     ),
-    SWITCH("Switch", false, false,
+    SWITCH("Switch", false, true,
             colorProperty("Color", 0),
             PropertyInfo.ofEnum("Activated", 0, "Yes", "No")
     ),
-    BUTTON("Button", false, false,
+    BUTTON("Button", false, true,
             colorProperty("Color", 0)
     ),
-    PRESSURE_PLATE("PressurePlate", false, false,
+    PRESSURE_PLATE("PressurePlate", false, true,
             colorProperty("Color", 0)
     ),
     TELEPORT("Teleport", false, false,
@@ -90,34 +90,48 @@ public enum BlockTemplate implements Template
             PropertyInfo.ofInteger("BackwardSteps", 0),
             PropertyInfo.ofEnum("Direction", 0, "Up", "Down", "Left", "Right" , "Front", "Back"),
             PropertyInfo.ofFloat("Speed", 3),
-            PropertyInfo.ofFloat("DelayTime", 0.82f)
+            PropertyInfo.ofFloat("DelayTime", 0.82f),
+            PropertyInfo.ofEnum("MovementMode", 0, "Constant", "Sinusoidal", "Transport")
     ),
     PORTAL_EXIT("PortalExit", false, false,
             colorProperty("Color", 0),
             PropertyInfo.ofEnum("Direction", 0, "North", "East", "South", "West")
     ),
-    BLINKING("Blinking", true, false,
+    BLINKING("Blinking", true, true,
             PropertyInfo.ofFloat("TimeActivated", 1.2f),
             PropertyInfo.ofFloat("TimeDeactivated", 1.2f),
             PropertyInfo.ofFloat("TimeBlending", 0.7f),
             PropertyInfo.ofFloat("Phase", 0)
     ),
-    LASER("Laser", false, false,
+    LASER("Laser", false, true,
             colorProperty("Color", 0),
             PropertyInfo.ofBoolean("Activated", true),
             PropertyInfo.ofEnum("NumOfBeams", 0, "4", "5")
     ),
-    TOGGLE("ToggleBlock", true, false,
+    TOGGLE("ToggleBlock", true, true,
             colorProperty("Color", 0),
             PropertyInfo.ofBoolean("Activated", true)
     ),
     SAND("Sand", false, true),
-    MAGNET("Magnet", false, false,
+    MAGNET("Magnet", false, true,
             colorProperty("Color", 0),
             PropertyInfo.ofInteger("BeamDistance", 3),
-            PropertyInfo.ofEnum("State", 2, "Off", "MagnetismOnly", "Full")
+            PropertyInfo.ofEnum("State", 2, "Off", "MagnetismOnly", "Full"),
+            PropertyInfo.ofEnum("Mode", 0, "Full", "OffAndMagnetism", "OffAndBeam", "MagnetismAndBeam")
     ),
-    OIL("Oil", false, true);
+    OIL("Oil", false, true),
+    WARP("Warp", true, false,
+            PropertyInfo.ofString("NextLevel", ""),
+            PropertyInfo.ofBoolean("RequireKeys", false)
+            
+    ),
+    LIGHT_SENSOR("LightSensor", false, true,
+            colorProperty("Color", 0),
+            PropertyInfo.ofBoolean("OneActivation", false),
+            PropertyInfo.ofEnum("Mode", 0, "Horizontal", "Vertical", "Both"),
+            PropertyInfo.ofBoolean("Emitter", true)
+    ),
+    SENSOR_SPIKES("SensorSpikes", false, true);
     
     public static final @NonNull BlockTemplate DEFAULT = NORMAL;
     public static final @NonNull BlockTemplate NULL = NO_BLOCK;
@@ -150,6 +164,9 @@ public enum BlockTemplate implements Template
     
     @Override
     public final @NonNull Map<String, PropertyInfo> getProperties() { return Map.copyOf(properties); }
+    
+    public final boolean hasAnyProperty() { return !properties.isEmpty(); }
+    public final int getPropertiesCount() { return properties.size(); }
     
     @Override
     public final boolean hasProperty(String name) { return properties.containsKey(name); }
@@ -185,6 +202,11 @@ public enum BlockTemplate implements Template
             return false;
         
         return MAP.containsKey(key.toLowerCase());
+    }
+    
+    public boolean canExpandToSides()
+    {
+        return !isNull() && !isBlockOnly() && hasAnyProperty();
     }
     
     

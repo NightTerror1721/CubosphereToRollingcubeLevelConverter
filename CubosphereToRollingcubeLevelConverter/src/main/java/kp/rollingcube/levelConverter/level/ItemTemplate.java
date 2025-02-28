@@ -60,6 +60,12 @@ public enum ItemTemplate implements Template
             PropertyInfo.ofInteger("Seconds", 15),
             PropertyInfo.ofBoolean("Additive", false)
     ),
+    MESSAGE("Message",
+            PropertyInfo.ofString("MessageId", ""),
+            textColorProperty("ForegroundColor", 15),
+            textColorProperty("BackgroundColor", 0),
+            PropertyInfo.ofBoolean("Closeable", true)
+    ),
     SHIELD("Shield",
             PropertyInfo.ofInteger("Seconds", 15),
             PropertyInfo.ofBoolean("Additive", false)
@@ -67,6 +73,11 @@ public enum ItemTemplate implements Template
     SLOW_MOTION("SlowMotion"),
     PORTAL_ENTRANCE("PortalEntrance",
             colorProperty("Color", 0)
+    ),
+    POISON("Poison"),
+    MIRROR("Mirror"),
+    LETTER("Letter",
+            PropertyInfo.ofString("Symbol", "A")
     );
     
     public static final @NonNull ItemTemplate DEFAULT = NO_ITEM;
@@ -170,5 +181,10 @@ public enum ItemTemplate implements Template
     private static PropertyInfo colorProperty(String name, int defaultIndex)
     {
         return Template.Utils.colorProperty(name, defaultIndex);
+    }
+    
+    private static PropertyInfo textColorProperty(String name, int defaultIndex)
+    {
+        return Template.Utils.textColorProperty(name, defaultIndex);
     }
 }

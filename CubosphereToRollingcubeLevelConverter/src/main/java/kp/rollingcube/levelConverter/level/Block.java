@@ -27,14 +27,14 @@ public final class Block extends LevelElement<BlockTemplate>
     
     private Block(BlockTemplate template)
     {
-        super(template);
+        super(template.canExpandToSides() ? BlockTemplate.DEFAULT : template);
         
-        this.up = createNewSide(SideTag.UP);
-        this.down = createNewSide(SideTag.DOWN);
-        this.left = createNewSide(SideTag.LEFT);
-        this.right = createNewSide(SideTag.RIGHT);
-        this.front = createNewSide(SideTag.FRONT);
-        this.back = createNewSide(SideTag.BACK);
+        this.up = createNewSide(SideTag.UP, template);
+        this.down = createNewSide(SideTag.DOWN, template);
+        this.left = createNewSide(SideTag.LEFT, template);
+        this.right = createNewSide(SideTag.RIGHT, template);
+        this.front = createNewSide(SideTag.FRONT, template);
+        this.back = createNewSide(SideTag.BACK, template);
     }
     
     public static @NonNull Block create(BlockTemplate template)
@@ -110,9 +110,13 @@ public final class Block extends LevelElement<BlockTemplate>
     }
 
     
-    private Side createNewSide(@NonNull SideTag sideTag)
+    private Side createNewSide(@NonNull SideTag sideTag, @NonNull BlockTemplate newTemplate)
     {
-        return Side.create(this, sideTag, BlockTemplate.NULL);
+        var template = newTemplate.canExpandToSides()
+                ? newTemplate
+                : BlockTemplate.NULL;
+        
+        return Side.create(this, sideTag, template);
     }
     
     private static Side getJsonSide(@NonNull Side side)

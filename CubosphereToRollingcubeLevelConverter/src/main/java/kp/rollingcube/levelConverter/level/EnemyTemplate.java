@@ -9,8 +9,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import java.io.IOException;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -26,61 +25,270 @@ import lombok.NonNull;
  */
 public enum EnemyTemplate implements Template
 {
-    NO_ENEMY(""),
+    NO_ENEMY("", List.of(), Set.of()),
     SPEEDER("Speeder",
-            PropertyInfo.ofInteger("ForwardSteps", 1),
-            PropertyInfo.ofInteger("BackwardSteps", 0),
-            PropertyInfo.ofFloat("Phase", 0),
-            PropertyInfo.ofFloat("Speed", 1)
+            List.of(
+                    PropertyInfo.ofInteger("ForwardSteps", 1),
+                    PropertyInfo.ofInteger("BackwardSteps", 0),
+                    PropertyInfo.ofFloat("Phase", 0),
+                    PropertyInfo.ofFloat("Speed", 1)
+            ),
+            Set.of(
+                    Interaction.of(EnemyInteractionType.SPIKES, false),
+                    Interaction.of(EnemyInteractionType.LASERS, false),
+                    Interaction.of(EnemyInteractionType.BUTTONS, true),
+                    Interaction.of(EnemyInteractionType.LIGHT_SENSORS, true),
+                    Interaction.of(EnemyInteractionType.BALL_SHIELD, false),
+                    Interaction.of(EnemyInteractionType.INVISIBLE_BLOCKS, false)
+            )
     ),
     CAPTIVATOR("Captivator",
-            PropertyInfo.ofFloat("Phase", 0),
-            PropertyInfo.ofFloat("DelayTime", 1),
-            PropertyInfo.ofFloat("AttackTime", 1)
+            List.of(
+                    PropertyInfo.ofFloat("Phase", 0),
+                    PropertyInfo.ofFloat("DelayTime", 1),
+                    PropertyInfo.ofFloat("AttackTime", 1)
+            ),
+            Set.of(
+                    Interaction.of(EnemyInteractionType.SPIKES, true),
+                    Interaction.of(EnemyInteractionType.LASERS, true),
+                    Interaction.of(EnemyInteractionType.BUTTONS, true),
+                    Interaction.of(EnemyInteractionType.LIGHT_SENSORS, true),
+                    Interaction.of(EnemyInteractionType.BALL_SHIELD, true),
+                    Interaction.of(EnemyInteractionType.INVISIBLE_BLOCKS, true)
+            )
     ),
     GEAR("Gear",
-            PropertyInfo.ofString("Path", "f"),
-            PropertyInfo.ofFloat("ForwardSpeed", 2),
-            PropertyInfo.ofFloat("RotateSpeed", 1)
+            List.of(
+                    PropertyInfo.ofString("Path", "f"),
+                    PropertyInfo.ofFloat("ForwardSpeed", 2),
+                    PropertyInfo.ofFloat("RotateSpeed", 1)
+            ),
+            Set.of(
+                    Interaction.of(EnemyInteractionType.SPIKES, true),
+                    Interaction.of(EnemyInteractionType.LASERS, true),
+                    Interaction.of(EnemyInteractionType.TELEPORTS, true),
+                    Interaction.of(EnemyInteractionType.BUTTONS, true),
+                    Interaction.of(EnemyInteractionType.LIGHT_SENSORS, true),
+                    Interaction.of(EnemyInteractionType.DIRECTION_RESTRICTIONS, false),
+                    Interaction.of(EnemyInteractionType.ICE, false),
+                    Interaction.of(EnemyInteractionType.FIRE, false),
+                    Interaction.of(EnemyInteractionType.BREAKING_BLOCKS, false),
+                    Interaction.of(EnemyInteractionType.TRAMPS_AND_VENTS, false),
+                    Interaction.of(EnemyInteractionType.MAGNETS, true),
+                    Interaction.of(EnemyInteractionType.ROTATORS, false),
+                    Interaction.of(EnemyInteractionType.BALL_SHIELD, true),
+                    Interaction.of(EnemyInteractionType.INVISIBLE_BLOCKS, true)
+            )
     ),
     GYRO("Gyro",
-            PropertyInfo.ofString("Path", "f"),
-            PropertyInfo.ofFloat("Speed", 1)
+            List.of(
+                    PropertyInfo.ofString("Path", "f"),
+                    PropertyInfo.ofFloat("Speed", 1)
+            ),
+            Set.of(
+                    Interaction.of(EnemyInteractionType.SPIKES, true),
+                    Interaction.of(EnemyInteractionType.LASERS, true),
+                    Interaction.of(EnemyInteractionType.TELEPORTS, true),
+                    Interaction.of(EnemyInteractionType.BUTTONS, true),
+                    Interaction.of(EnemyInteractionType.LIGHT_SENSORS, true),
+                    Interaction.of(EnemyInteractionType.DIRECTION_RESTRICTIONS, false),
+                    Interaction.of(EnemyInteractionType.ICE, false),
+                    Interaction.of(EnemyInteractionType.FIRE, false),
+                    Interaction.of(EnemyInteractionType.BREAKING_BLOCKS, false),
+                    Interaction.of(EnemyInteractionType.TRAMPS_AND_VENTS, false),
+                    Interaction.of(EnemyInteractionType.MAGNETS, false),
+                    Interaction.of(EnemyInteractionType.ROTATORS, false),
+                    Interaction.of(EnemyInteractionType.BALL_SHIELD, true),
+                    Interaction.of(EnemyInteractionType.INVISIBLE_BLOCKS, true)
+            )
     ),
     SLOW_SPIKES("SlowSpikes",
-            PropertyInfo.ofFloat("Speed", 1.62f),
-            PropertyInfo.ofEnum("TurnDirection", 0, "Left", "Right"),
-            PropertyInfo.ofBoolean("TiedToPlane", true),
-            PropertyInfo.ofEnum("SideRestriction", 3, "None", "Items", "Specials", "Both")
+            List.of(
+                    PropertyInfo.ofFloat("Speed", 1.62f),
+                    PropertyInfo.ofEnum("TurnDirection", 0, "Left", "Right"),
+                    PropertyInfo.ofBoolean("TiedToPlane", true),
+                    PropertyInfo.ofEnum("SideRestriction", 3, "None", "Items", "Specials", "Both")
+            ),
+            Set.of(
+                    Interaction.of(EnemyInteractionType.SPIKES, true),
+                    Interaction.of(EnemyInteractionType.LASERS, true),
+                    Interaction.of(EnemyInteractionType.TELEPORTS, true),
+                    Interaction.of(EnemyInteractionType.BUTTONS, true),
+                    Interaction.of(EnemyInteractionType.LIGHT_SENSORS, true),
+                    Interaction.of(EnemyInteractionType.DIRECTION_RESTRICTIONS, false),
+                    Interaction.of(EnemyInteractionType.FIRE, false),
+                    Interaction.of(EnemyInteractionType.ROTATORS, false),
+                    Interaction.of(EnemyInteractionType.BALL_SHIELD, true),
+                    Interaction.of(EnemyInteractionType.INVISIBLE_BLOCKS, true)
+            )
     ),
     RANDOM_WALKER("RandomWalker",
-            PropertyInfo.ofFloat("Speed", 5f),
-            PropertyInfo.ofBoolean("TiedToPlane", true),
-            PropertyInfo.ofEnum("SideRestriction", 3, "None", "Items", "Specials", "Both")
+            List.of(
+                    PropertyInfo.ofFloat("Speed", 5f),
+                    PropertyInfo.ofBoolean("TiedToPlane", true),
+                    PropertyInfo.ofEnum("SideRestriction", 3, "None", "Items", "Specials", "Both")
+            ),
+            Set.of(
+                    Interaction.of(EnemyInteractionType.SPIKES, true),
+                    Interaction.of(EnemyInteractionType.LASERS, true),
+                    Interaction.of(EnemyInteractionType.TELEPORTS, true),
+                    Interaction.of(EnemyInteractionType.BUTTONS, true),
+                    Interaction.of(EnemyInteractionType.LIGHT_SENSORS, true),
+                    Interaction.of(EnemyInteractionType.DIRECTION_RESTRICTIONS, false),
+                    Interaction.of(EnemyInteractionType.FIRE, false),
+                    Interaction.of(EnemyInteractionType.BALL_SHIELD, true),
+                    Interaction.of(EnemyInteractionType.INVISIBLE_BLOCKS, true)
+            )
     ),
     HUNTER("Hunter",
-            PropertyInfo.ofFloat("Speed", 1f),
-            PropertyInfo.ofBoolean("TiedToPlane", false)
+            List.of(
+                    PropertyInfo.ofFloat("Speed", 1f),
+                    PropertyInfo.ofBoolean("TiedToPlane", false)
+            ),
+            Set.of(
+                    Interaction.of(EnemyInteractionType.SPIKES, true),
+                    Interaction.of(EnemyInteractionType.LASERS, true),
+                    Interaction.of(EnemyInteractionType.TELEPORTS, true),
+                    Interaction.of(EnemyInteractionType.BUTTONS, true),
+                    Interaction.of(EnemyInteractionType.LIGHT_SENSORS, true),
+                    Interaction.of(EnemyInteractionType.DIRECTION_RESTRICTIONS, false),
+                    Interaction.of(EnemyInteractionType.FIRE, false),
+                    Interaction.of(EnemyInteractionType.BALL_SHIELD, true),
+                    Interaction.of(EnemyInteractionType.INVISIBLE_BLOCKS, true)
+            )
+    ),
+    JUMPER("Jumper",
+            List.of(
+                    PropertyInfo.ofString("Path", "f"),
+                    PropertyInfo.ofFloat("Speed", 2.5f)
+            ),
+            Set.of(
+                    Interaction.of(EnemyInteractionType.SPIKES, true),
+                    Interaction.of(EnemyInteractionType.LASERS, true),
+                    Interaction.of(EnemyInteractionType.TELEPORTS, true),
+                    Interaction.of(EnemyInteractionType.BUTTONS, true),
+                    Interaction.of(EnemyInteractionType.LIGHT_SENSORS, true),
+                    Interaction.of(EnemyInteractionType.DIRECTION_RESTRICTIONS, false),
+                    Interaction.of(EnemyInteractionType.ICE, false),
+                    Interaction.of(EnemyInteractionType.FIRE, false),
+                    Interaction.of(EnemyInteractionType.BREAKING_BLOCKS, false),
+                    Interaction.of(EnemyInteractionType.TRAMPS_AND_VENTS, false),
+                    Interaction.of(EnemyInteractionType.MAGNETS, false),
+                    Interaction.of(EnemyInteractionType.ROTATORS, false),
+                    Interaction.of(EnemyInteractionType.BALL_SHIELD, true),
+                    Interaction.of(EnemyInteractionType.INVISIBLE_BLOCKS, true)
+            )
+    ),
+    RHOMBUS("Rhombus",
+            List.of(
+                    PropertyInfo.ofString("Path", "f"),
+                    PropertyInfo.ofFloat("Speed", 3.25f)
+            ),
+            Set.of(
+                    Interaction.of(EnemyInteractionType.SPIKES, true),
+                    Interaction.of(EnemyInteractionType.LASERS, true),
+                    Interaction.of(EnemyInteractionType.TELEPORTS, true),
+                    Interaction.of(EnemyInteractionType.BUTTONS, true),
+                    Interaction.of(EnemyInteractionType.LIGHT_SENSORS, true),
+                    Interaction.of(EnemyInteractionType.DIRECTION_RESTRICTIONS, false),
+                    Interaction.of(EnemyInteractionType.ICE, false),
+                    Interaction.of(EnemyInteractionType.FIRE, false),
+                    Interaction.of(EnemyInteractionType.BREAKING_BLOCKS, false),
+                    Interaction.of(EnemyInteractionType.TRAMPS_AND_VENTS, false),
+                    Interaction.of(EnemyInteractionType.MAGNETS, false),
+                    Interaction.of(EnemyInteractionType.ROTATORS, false),
+                    Interaction.of(EnemyInteractionType.BALL_SHIELD, true),
+                    Interaction.of(EnemyInteractionType.INVISIBLE_BLOCKS, true)
+            )
+    ),
+    ANOMALY("Anomaly",
+            List.of(
+                    PropertyInfo.ofString("Path", "f"),
+                    PropertyInfo.ofFloat("Speed", 3.25f)
+            ),
+            Set.of(
+                    Interaction.of(EnemyInteractionType.SPIKES, true),
+                    Interaction.of(EnemyInteractionType.LASERS, true),
+                    Interaction.of(EnemyInteractionType.TELEPORTS, true),
+                    Interaction.of(EnemyInteractionType.BUTTONS, true),
+                    Interaction.of(EnemyInteractionType.LIGHT_SENSORS, true),
+                    Interaction.of(EnemyInteractionType.DIRECTION_RESTRICTIONS, false),
+                    Interaction.of(EnemyInteractionType.ICE, false),
+                    Interaction.of(EnemyInteractionType.FIRE, false),
+                    Interaction.of(EnemyInteractionType.BREAKING_BLOCKS, false),
+                    Interaction.of(EnemyInteractionType.TRAMPS_AND_VENTS, false),
+                    Interaction.of(EnemyInteractionType.MAGNETS, false),
+                    Interaction.of(EnemyInteractionType.ROTATORS, false),
+                    Interaction.of(EnemyInteractionType.BALL_SHIELD, true),
+                    Interaction.of(EnemyInteractionType.INVISIBLE_BLOCKS, true)
+            )
+    ),
+    SMART_SPEEDER("SmartSpeeder",
+            List.of(
+                    PropertyInfo.ofString("Path", "f"),
+                    PropertyInfo.ofFloat("Speed", 3f)
+            ),
+            Set.of(
+                    Interaction.of(EnemyInteractionType.SPIKES, true),
+                    Interaction.of(EnemyInteractionType.LASERS, true),
+                    Interaction.of(EnemyInteractionType.TELEPORTS, true),
+                    Interaction.of(EnemyInteractionType.BUTTONS, true),
+                    Interaction.of(EnemyInteractionType.LIGHT_SENSORS, true),
+                    Interaction.of(EnemyInteractionType.DIRECTION_RESTRICTIONS, false),
+                    Interaction.of(EnemyInteractionType.ICE, false),
+                    Interaction.of(EnemyInteractionType.FIRE, false),
+                    Interaction.of(EnemyInteractionType.BREAKING_BLOCKS, false),
+                    Interaction.of(EnemyInteractionType.TRAMPS_AND_VENTS, false),
+                    Interaction.of(EnemyInteractionType.MAGNETS, false),
+                    Interaction.of(EnemyInteractionType.ROTATORS, false),
+                    Interaction.of(EnemyInteractionType.BALL_SHIELD, true),
+                    Interaction.of(EnemyInteractionType.INVISIBLE_BLOCKS, true)
+            )
     );
     
     public static final @NonNull EnemyTemplate DEFAULT = NO_ENEMY;
     
     @Getter private final @NonNull String rollingcubeKey;
     private final @NonNull Map<String, PropertyInfo> properties;
+    private final @NonNull Set<EnemyInteractionType> availableInteractions;
+    private final @NonNull Set<EnemyInteractionType> defaultInteractions;
     
-    private EnemyTemplate(@NonNull String rollingcubeKey, @NonNull PropertyInfo... properties)
+    EnemyTemplate(
+            @NonNull String rollingcubeKey,
+            @NonNull Collection<PropertyInfo> properties,
+            @NonNull Collection<Interaction> interactions
+    )
     {
         this.rollingcubeKey = rollingcubeKey;
         
-        if(properties.length < 1)
+        if(properties.isEmpty())
             this.properties = Map.of();
         else
-            this.properties = Map.copyOf(Stream.of(properties)
+            this.properties = Map.copyOf(properties.stream()
                     .map(Objects::requireNonNull)
                     .collect(Collectors.toMap(
                             PropertyInfo::getName,
                             Function.identity()
                     )));
+
+        if (interactions.isEmpty())
+        {
+            this.availableInteractions = Set.of();
+            this.defaultInteractions = Set.of();
+        }
+        else {
+            this.availableInteractions = Set.copyOf(
+                    interactions.stream()
+                            .map(Interaction::type)
+                            .collect(Collectors.toSet())
+            );
+            this.defaultInteractions = Set.copyOf(
+                    interactions.stream()
+                            .filter(Interaction::isDefault)
+                            .map(Interaction::type)
+                            .collect(Collectors.toSet())
+            );
+        }
     }
     
     @Override
@@ -101,6 +309,11 @@ public enum EnemyTemplate implements Template
         
         return properties.get(name);
     }
+
+    public final @NonNull Set<EnemyInteractionType> getAvailableInteractions() { return Set.copyOf(availableInteractions); }
+    public final @NonNull Set<EnemyInteractionType> getDefaultInteractions() { return Set.copyOf(defaultInteractions); }
+
+    public final boolean hasInteractionAvailable(EnemyInteractionType type) { return availableInteractions.contains(type); }
     
     @Override
     public final String toString() { return getRollingcubeKey(); }
@@ -124,6 +337,14 @@ public enum EnemyTemplate implements Template
             return false;
         
         return MAP.containsKey(key.toLowerCase());
+    }
+
+
+    private record Interaction(EnemyInteractionType type, boolean isDefault)
+    {
+        public static Interaction of(EnemyInteractionType type, boolean isDefault) {
+            return new Interaction(type, isDefault);
+        }
     }
     
     

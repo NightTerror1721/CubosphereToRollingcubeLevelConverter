@@ -1,0 +1,1246 @@
+{
+  "name" : "",
+  "version" : "1.1",
+  "theme" : "Egypt",
+  "music" : "Egypt",
+  "initialTime" : 60,
+  "maxTime" : 60,
+  "themeMode" : "NORMAL",
+  "blocks" : [ {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 1,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "StaticSpikes"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BlueDiamond"
+      }
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 4,
+    "left" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "3"
+      }
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Burned"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 3,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Burned"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Burned"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : 0,
+    "z" : 4,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Burned"
+    },
+    "back" : {
+      "template" : "Burned"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : 0,
+    "z" : 4,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Burned"
+    },
+    "back" : {
+      "template" : "Burned"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 3,
+    "y" : 0,
+    "z" : 4,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Key"
+      }
+    },
+    "back" : {
+      "template" : "Burned"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : 0,
+    "z" : 4,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Burned"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Burned"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -1,
+    "z" : 4,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -2,
+    "z" : 4,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BlueDiamond"
+      }
+    },
+    "front" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "back" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "0"
+      }
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -1,
+    "z" : 3,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Burned"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -1,
+    "z" : 5,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Burned"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -3,
+    "z" : 4,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Hourglass"
+      }
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -4,
+    "z" : 4,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Burned"
+    },
+    "back" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "0"
+      }
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 3,
+    "y" : -4,
+    "z" : 4,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : -4,
+    "z" : 4,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "back" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Key"
+      }
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : -4,
+    "z" : 4,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Burned"
+    },
+    "back" : {
+      "template" : "Burned"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -4,
+    "z" : 4,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Burned"
+    },
+    "back" : {
+      "template" : "Burned"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -3,
+    "z" : 4,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Burned"
+    },
+    "back" : {
+      "template" : "Burned",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -2,
+    "z" : 4,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "back" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -1,
+    "z" : 4,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "GreenDiamond"
+      }
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 0,
+    "left" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "3"
+      }
+    },
+    "right" : {
+      "template" : "Burned"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -1,
+    "z" : 0,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Burned"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -2,
+    "z" : 0,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "2"
+      }
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Burned"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : -2,
+    "z" : 0,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : -2,
+    "z" : 0,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Burned"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : -2,
+    "z" : 1,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : -2,
+    "z" : 2,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : -2,
+    "z" : 3,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : -2,
+    "z" : 4,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : -2,
+    "z" : 5,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : -2,
+    "z" : 6,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : -2,
+    "z" : 7,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "2"
+      }
+    },
+    "front" : {
+      "template" : "StaticSpikes"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Goblet"
+      }
+    },
+    "up" : {
+      "template" : "Burned",
+      "item" : {
+        "template" : "Key"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : -2,
+    "z" : 10,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BlueDiamond"
+      }
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : -2,
+    "z" : 10,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -2,
+    "z" : 10,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -3,
+    "z" : 10,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -4,
+    "z" : 10,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : -4,
+    "z" : 10,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "GreenDiamond"
+      }
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : -4,
+    "z" : 10,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BlueDiamond"
+      }
+    },
+    "down" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Key"
+      }
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 3,
+    "y" : -4,
+    "z" : 10,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -4,
+    "z" : 10,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -3,
+    "z" : 10,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -2,
+    "z" : 10,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 3,
+    "y" : -2,
+    "z" : 10,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "GreenDiamond"
+      }
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -2,
+    "z" : 9,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -2,
+    "z" : 8,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -4,
+    "z" : 9,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -4,
+    "z" : 8,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Icy",
+    "x" : 8,
+    "y" : -2,
+    "z" : 8,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Exit",
+      "properties" : {
+        "Secret" : "false",
+        "NextLevel" : ""
+      }
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "StaticSpikes"
+    },
+    "up" : {
+      "template" : "StaticSpikes"
+    }
+  } ],
+  "balls" : [ {
+    "template" : "Hiro",
+    "initialPosition" : {
+      "x" : 0,
+      "y" : 0,
+      "z" : 1,
+      "side" : 0,
+      "direction" : 0
+    }
+  } ]
+}

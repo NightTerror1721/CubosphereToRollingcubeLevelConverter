@@ -1,0 +1,458 @@
+{
+  "name" : "",
+  "version" : "1.1",
+  "theme" : "Egypt",
+  "music" : "Egypt",
+  "initialTime" : 60,
+  "maxTime" : 60,
+  "themeMode" : "NORMAL",
+  "blocks" : [ {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : -1,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "RetractableSpikes",
+      "properties" : {
+        "Speed" : "3.0",
+        "Phase" : "0.0"
+      }
+    },
+    "down" : {
+      "template" : "Switch",
+      "properties" : {
+        "Activated" : "1",
+        "Color" : "0"
+      }
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Breaking",
+    "x" : 0,
+    "y" : 0,
+    "z" : 2
+  }, {
+    "template" : "Breaking",
+    "x" : -1,
+    "y" : 0,
+    "z" : 2
+  }, {
+    "template" : "Breaking",
+    "x" : 1,
+    "y" : 0,
+    "z" : 2
+  }, {
+    "template" : "Normal",
+    "x" : -5,
+    "y" : 1,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Trampoline"
+    }
+  }, {
+    "template" : "Icy",
+    "x" : -2,
+    "y" : 0,
+    "z" : 2,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Icy",
+    "x" : 2,
+    "y" : 0,
+    "z" : 2,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 7,
+    "y" : 2,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Key"
+      }
+    },
+    "right" : {
+      "template" : "Trampoline"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Goblet"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 7,
+    "y" : 2,
+    "z" : 1,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Teleport",
+      "properties" : {
+        "Order" : "0",
+        "Activated" : "1",
+        "Color" : "0",
+        "Direction" : "2"
+      }
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 7,
+    "y" : 3,
+    "z" : 1,
+    "left" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "GreenDiamond"
+      }
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 7,
+    "y" : 4,
+    "z" : 1,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 7,
+    "y" : 4,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "right" : {
+      "template" : "Burned",
+      "item" : {
+        "template" : "BlueDiamond"
+      }
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 7,
+    "y" : 4,
+    "z" : 3,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 7,
+    "y" : 3,
+    "z" : 3,
+    "left" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "GreenDiamond"
+      }
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 7,
+    "y" : 2,
+    "z" : 3,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "StaticSpikes"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 10,
+    "y" : 3,
+    "z" : 2,
+    "left" : {
+      "template" : "Burned"
+    },
+    "right" : {
+      "template" : "Exit",
+      "properties" : {
+        "Secret" : "false",
+        "NextLevel" : ""
+      }
+    },
+    "front" : {
+      "template" : "Burned"
+    },
+    "back" : {
+      "template" : "Burned"
+    },
+    "down" : {
+      "template" : "Burned"
+    },
+    "up" : {
+      "template" : "Burned"
+    }
+  }, {
+    "template" : "Breaking",
+    "x" : 5,
+    "y" : 3,
+    "z" : 2
+  }, {
+    "template" : "Normal",
+    "x" : -6,
+    "y" : -1,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Key"
+      }
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "back" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Icy",
+    "x" : 0,
+    "y" : 0,
+    "z" : 4,
+    "left" : {
+      "template" : "StaticSpikes"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Teleport",
+      "properties" : {
+        "Order" : "0",
+        "Activated" : "1",
+        "Color" : "0",
+        "Direction" : "1"
+      }
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  } ],
+  "enemies" : [ {
+    "template" : "Gear",
+    "properties" : {
+      "Path" : "f",
+      "ForwardSpeed" : "3.0",
+      "RotateSpeed" : "1.0"
+    },
+    "initialPosition" : {
+      "x" : -2,
+      "y" : 0,
+      "z" : 2,
+      "side" : 0,
+      "direction" : 1
+    },
+    "interactions" : 13853
+  } ],
+  "balls" : [ {
+    "template" : "Hiro",
+    "initialPosition" : {
+      "x" : 0,
+      "y" : 0,
+      "z" : -1,
+      "side" : 0,
+      "direction" : 0
+    }
+  } ]
+}

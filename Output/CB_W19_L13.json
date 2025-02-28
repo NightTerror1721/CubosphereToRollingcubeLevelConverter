@@ -1,0 +1,818 @@
+{
+  "name" : "",
+  "version" : "1.1",
+  "theme" : "Egypt",
+  "music" : "Egypt",
+  "initialTime" : 90,
+  "maxTime" : 90,
+  "themeMode" : "NORMAL",
+  "blocks" : [ {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 0,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 1,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 3,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : 0,
+    "z" : 3,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Shield",
+        "properties" : {
+          "Additive" : "false",
+          "Seconds" : "15"
+        }
+      }
+    },
+    "back" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Key"
+      }
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "StaticSpikes"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : 0,
+    "z" : 3,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : 0,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : 0,
+    "z" : 1,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : 0,
+    "z" : 0,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Exit",
+      "properties" : {
+        "Secret" : "false",
+        "NextLevel" : ""
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : 0,
+    "z" : 0,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "0"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : -1,
+    "z" : 0,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : -2,
+    "z" : 0,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : -3,
+    "z" : 0,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : -4,
+    "z" : 0,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : -4,
+    "z" : 1,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : -4,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "BlueDiamond"
+      }
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : -4,
+    "z" : 3,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "StaticSpikes"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "StaticSpikes"
+    },
+    "up" : {
+      "template" : "Burned"
+    }
+  }, {
+    "template" : "Icy",
+    "x" : 1,
+    "y" : 1,
+    "z" : -3,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "GreenDiamond"
+      }
+    },
+    "back" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "2"
+      }
+    },
+    "down" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "0"
+      }
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : 5,
+    "z" : 4,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Laser",
+      "properties" : {
+        "Activated" : "true",
+        "NumOfBeams" : "1",
+        "Color" : "0"
+      }
+    },
+    "down" : {
+      "template" : "Burned"
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "JumpPlus"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : 5,
+    "z" : 4,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Burned"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 5,
+    "z" : 4,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Burned"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 5,
+    "z" : 3,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Burned",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "JumpPlus"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 5,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Burned"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : 5,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Laser",
+      "properties" : {
+        "Activated" : "true",
+        "NumOfBeams" : "1",
+        "Color" : "0"
+      }
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Burned",
+      "item" : {
+        "template" : "Key"
+      }
+    },
+    "up" : {
+      "template" : "PortalExit",
+      "properties" : {
+        "Color" : "0",
+        "Direction" : "0"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : 5,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Burned"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : 5,
+    "z" : 3,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Burned",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "JumpPlus"
+      }
+    }
+  }, {
+    "template" : "Blinking",
+    "properties" : {
+      "TimeActivated" : "2.0",
+      "Phase" : "0.0",
+      "TimeDeactivated" : "1.0",
+      "TimeBlending" : "1.0"
+    },
+    "x" : 1,
+    "y" : 3,
+    "z" : 3
+  }, {
+    "template" : "Elevator",
+    "properties" : {
+      "Speed" : "1.0",
+      "MovementMode" : "0",
+      "ForwardSteps" : "2",
+      "BackwardSteps" : "2",
+      "DelayTime" : "0.5",
+      "Direction" : "3"
+    },
+    "x" : 1,
+    "y" : 8,
+    "z" : 3
+  }, {
+    "template" : "Icy",
+    "x" : 1,
+    "y" : 5,
+    "z" : 9,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "StaticSpikes"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Icy",
+    "x" : 1,
+    "y" : 0,
+    "z" : 9,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "JumpMinus"
+      }
+    },
+    "back" : {
+      "template" : "Switch",
+      "properties" : {
+        "Activated" : "1",
+        "Color" : "1"
+      }
+    },
+    "down" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "JumpMinus"
+      }
+    },
+    "up" : {
+      "template" : "StaticSpikes"
+    }
+  }, {
+    "template" : "ToggleBlock",
+    "properties" : {
+      "Activated" : "false",
+      "Color" : "1"
+    },
+    "x" : 1,
+    "y" : 4,
+    "z" : -3
+  }, {
+    "template" : "Icy",
+    "x" : 1,
+    "y" : 12,
+    "z" : 7,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "PortalEntrance",
+        "properties" : {
+          "Color" : "0"
+        }
+      }
+    }
+  } ],
+  "enemies" : [ {
+    "template" : "Gyro",
+    "properties" : {
+      "Path" : "ffr",
+      "Speed" : "3.0"
+    },
+    "initialPosition" : {
+      "x" : 0,
+      "y" : 5,
+      "z" : 2,
+      "side" : 0,
+      "direction" : 0
+    },
+    "interactions" : 12829
+  } ],
+  "balls" : [ {
+    "template" : "Hiro",
+    "initialPosition" : {
+      "x" : 0,
+      "y" : 0,
+      "z" : 0,
+      "side" : 0,
+      "direction" : 0
+    }
+  } ]
+}

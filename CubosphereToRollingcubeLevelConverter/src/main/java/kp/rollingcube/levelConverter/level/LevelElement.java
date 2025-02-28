@@ -13,13 +13,14 @@ import lombok.NonNull;
  *
  * @author Marc
  */
+@Getter
 abstract class LevelElement<T extends Template>
 {
     @JsonInclude(value = JsonInclude.Include.CUSTOM, valueFilter = Template.JsonIncludeDefaultFilter.class)
-    @Getter private final @NonNull T template;
+    private final @NonNull T template;
     
     @JsonInclude(value = JsonInclude.Include.NON_EMPTY, content = JsonInclude.Include.NON_EMPTY)
-    @Getter private final @NonNull Map<String, Property> properties = new HashMap<>();
+    private final @NonNull Map<String, Property> properties = new HashMap<>();
     
     LevelElement(@NonNull T template)
     {

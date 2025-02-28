@@ -46,6 +46,7 @@ public final class JsonMapper
         module.addSerializer(BallTemplate.class, new BallTemplate.Serializer());
         module.addDeserializer(BallTemplate.class, new BallTemplate.Deserializer());
         module.addSerializer(Property.class, new Property.Serializer());
+        module.addSerializer(EnemyInteraction.class, new EnemyInteraction.Serializer());
         mapper.registerModule(module);
         
         return mapper;

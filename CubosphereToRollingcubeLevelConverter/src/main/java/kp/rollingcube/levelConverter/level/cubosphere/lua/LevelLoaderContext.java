@@ -10,6 +10,7 @@ import java.util.Optional;
 import kp.rollingcube.levelConverter.level.BlockId;
 import kp.rollingcube.levelConverter.level.SideId;
 import kp.rollingcube.levelConverter.level.SideTag;
+import kp.rollingcube.levelConverter.level.cubosphere.CubosphereBall;
 import kp.rollingcube.levelConverter.level.cubosphere.CubosphereLevel;
 import kp.rollingcube.levelConverter.level.cubosphere.CubospherePropertyValue;
 import kp.rollingcube.levelConverter.level.cubosphere.EnemyId;
@@ -149,10 +150,16 @@ public class LevelLoaderContext
                 put("LEVEL_LastBlock", LuaFunction.of(() -> level.getLastBlock().getId().getCode()));
                 
                 put("AddBall", LuaFunction.of((ByteString template, Table positionTable, Number startSide, Number startDirection) -> {
-                    setBallInitialPosition(positionTable);
-                    level.setBallTemplate(template.toString());
-                    level.setBallInitialSide(SideTag.fromCubosphereSideId(startSide.intValue()));
-                    level.setBallInitialDirection(startDirection.intValue(), level.getBallInitialSide());
+                    var ball = level.createNewBall(template.toString());
+                    if(ball == null)
+                    {
+                        warn("Cannot load ball '%s'", template);
+                        return;
+                    }
+                    
+                    setBallInitialPosition(ball, positionTable);
+                    ball.setSide(SideTag.fromCubosphereSideId(startSide.intValue()));
+                    ball.setCubosphereDirection(startDirection.intValue(), ball.getSide());
                 }));
                 
                 put("THEME_Load", LuaFunction.of((ByteString template) -> level.setTheme(template.toString())));
@@ -369,16 +376,16 @@ public class LevelLoaderContext
         });
     }
     
-    private void setBallInitialPosition(Number[] positions)
+    private void setBallInitialPosition(CubosphereBall ball, Number[] positions)
     {
-        level.setBallInitialX(positions[0].intValue() / 40);
-        level.setBallInitialY(positions[1].intValue() / 40);
-        level.setBallInitialZ(positions[2].intValue() / 40);
+        ball.setX(positions[0].intValue() / 40);
+        ball.setY(positions[1].intValue() / 40);
+        ball.setZ(positions[2].intValue() / 40);
     }
     
-    private void setBallInitialPosition(Table positions)
+    private void setBallInitialPosition(CubosphereBall ball, Table positions)
     {
-        setBallInitialPosition(decodeVector(positions));
+        setBallInitialPosition(ball, decodeVector(positions));
     }
     
     private Table readTableFromEnv(@NonNull String name)
@@ -416,21 +423,23 @@ public class LevelLoaderContext
     
     private void findInitialBallData()
     {        
+        var ballType = readStringFromEnv("BallType");
+        if(ballType == null)
+            ballType = "";
+        
+        var ball = level.createNewBall(ballType);
+        
         var startBlockPos = readTableFromEnv("startblockpos");
         if(startBlockPos != null)
-            setBallInitialPosition(startBlockPos);
-        
-        var ballType = readStringFromEnv("BallType");
-        if(ballType != null)
-            level.setBallTemplate(ballType);
+            setBallInitialPosition(ball, startBlockPos);
         
         Number data = readNumberFromEnv("startside");
         if(data != null)
-            level.setBallInitialSide(SideTag.fromCubosphereSideId(data.intValue()));
+            ball.setSide(SideTag.fromCubosphereSideId(data.intValue()));
         
         data = readNumberFromEnv("startrotation");
         if(data != null)
-            level.setBallInitialDirection(data.intValue(), level.getBallInitialSide());
+            ball.setCubosphereDirection(data.intValue(), ball.getSide());
     }
     
     private static Object dummyFunction()

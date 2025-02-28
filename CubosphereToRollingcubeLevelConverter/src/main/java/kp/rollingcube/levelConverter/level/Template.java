@@ -81,5 +81,27 @@ public interface Template
                     "White"
             );
         }
+        
+        public static PropertyInfo textColorProperty(String name, int defaultIndex)
+        {
+            return PropertyInfo.ofEnum(name, defaultIndex,
+                    "Black",
+                    "DarkBlue",
+                    "DarkGreen",
+                    "DarkCyan",
+                    "DarkRed",
+                    "DarkPurple",
+                    "Gold",
+                    "Gray",
+                    "DarkGray",
+                    "Blue",
+                    "Green",
+                    "Cyan",
+                    "Red",
+                    "LightPurple",
+                    "Yellow",
+                    "White"
+            );
+        }
     }
 }

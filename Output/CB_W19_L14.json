@@ -1,0 +1,678 @@
+{
+  "name" : "",
+  "version" : "1.1",
+  "theme" : "Egypt",
+  "music" : "Egypt",
+  "initialTime" : 60,
+  "maxTime" : 60,
+  "themeMode" : "NORMAL",
+  "blocks" : [ {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 0,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Burned"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 1,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Burned"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 2,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Burned"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 3,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : 0,
+    "z" : 3,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Burned"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : 0,
+    "z" : 3,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "3"
+      }
+    },
+    "back" : {
+      "template" : "StaticSpikes"
+    },
+    "down" : {
+      "template" : "Teleport",
+      "properties" : {
+        "Order" : "0",
+        "Activated" : "1",
+        "Color" : "0",
+        "Direction" : "2"
+      }
+    },
+    "up" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "SleepingPill"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 3,
+    "y" : 0,
+    "z" : 3,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Burned"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : 0,
+    "z" : 3,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Burned"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Burned"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -1,
+    "z" : 3,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -1,
+    "z" : 2,
+    "left" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "2"
+      }
+    },
+    "right" : {
+      "template" : "Burned"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -1,
+    "z" : 4,
+    "left" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "Key"
+      }
+    },
+    "right" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "2"
+      }
+    },
+    "front" : {
+      "template" : "Burned"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -2,
+    "z" : 3,
+    "left" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "3"
+      }
+    },
+    "right" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Hourglass"
+      }
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -3,
+    "z" : 3,
+    "left" : {
+      "template" : "Exit",
+      "properties" : {
+        "Secret" : "false",
+        "NextLevel" : ""
+      }
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Burned"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "1"
+      }
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -2,
+    "z" : 0,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Trampoline"
+    },
+    "front" : {
+      "template" : "StaticSpikes"
+    },
+    "back" : {
+      "template" : "StaticSpikes"
+    },
+    "down" : {
+      "template" : "StaticSpikes"
+    },
+    "up" : {
+      "template" : "StaticSpikes"
+    }
+  }, {
+    "template" : "Icy",
+    "x" : 0,
+    "y" : -5,
+    "z" : 0,
+    "left" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "right" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Burned",
+    "x" : 3,
+    "y" : -3,
+    "z" : 0,
+    "left" : {
+      "template" : "Burned"
+    },
+    "right" : {
+      "template" : "Burned",
+      "item" : {
+        "template" : "Goblet"
+      }
+    },
+    "front" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "1"
+      }
+    },
+    "back" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "3"
+      }
+    },
+    "down" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "3"
+      }
+    },
+    "up" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "3"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 3,
+    "y" : -1,
+    "z" : 0,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "StaticSpikes"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 5,
+    "y" : -1,
+    "z" : 6,
+    "left" : {
+      "template" : "Trampoline"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "Burned"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Switch",
+      "properties" : {
+        "Activated" : "1",
+        "Color" : "0"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 8,
+    "y" : -1,
+    "z" : 0,
+    "left" : {
+      "template" : "Teleport",
+      "properties" : {
+        "Order" : "0",
+        "Activated" : "1",
+        "Color" : "0",
+        "Direction" : "0"
+      }
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "1"
+      }
+    },
+    "back" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "GreenDiamond"
+      }
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 8,
+    "y" : -1,
+    "z" : 6,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Laser",
+      "properties" : {
+        "Activated" : "true",
+        "NumOfBeams" : "1",
+        "Color" : "0"
+      }
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 9,
+    "y" : -1,
+    "z" : 0,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Burned"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Burned"
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 9,
+    "y" : -1,
+    "z" : 1,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Burned"
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Icy",
+    "x" : -1,
+    "y" : 5,
+    "z" : 3,
+    "left" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "right" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "front" : {
+      "template" : "Icy"
+    },
+    "back" : {
+      "template" : "Icy"
+    },
+    "down" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "up" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    }
+  }, {
+    "template" : "Icy",
+    "x" : -4,
+    "y" : 3,
+    "z" : 3,
+    "left" : {
+      "template" : "Icy"
+    },
+    "right" : {
+      "template" : "Burned",
+      "item" : {
+        "template" : "Key"
+      }
+    },
+    "front" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "back" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "Icy"
+    },
+    "up" : {
+      "template" : "Icy",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    }
+  } ],
+  "balls" : [ {
+    "template" : "Hiro",
+    "initialPosition" : {
+      "x" : 0,
+      "y" : 0,
+      "z" : 1,
+      "side" : 0,
+      "direction" : 0
+    }
+  } ]
+}

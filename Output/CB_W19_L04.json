@@ -1,0 +1,666 @@
+{
+  "name" : "",
+  "version" : "1.1",
+  "theme" : "Egypt",
+  "music" : "Egypt",
+  "initialTime" : 80,
+  "maxTime" : 80,
+  "themeMode" : "NORMAL",
+  "blocks" : [ {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : 0,
+    "z" : 3,
+    "left" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "1"
+      }
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Key"
+      }
+    },
+    "back" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BlueDiamond"
+      }
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Sand"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 3,
+    "y" : 0,
+    "z" : 3,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 3,
+    "y" : 0,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Sand"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Sand"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Magnet",
+      "properties" : {
+        "State" : "1",
+        "Mode" : "0",
+        "Color" : "3",
+        "BeamDistance" : "2"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Magnet",
+      "properties" : {
+        "State" : "1",
+        "Mode" : "0",
+        "Color" : "3",
+        "BeamDistance" : "2"
+      }
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Sand"
+    },
+    "up" : {
+      "template" : "Sand"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : 1,
+    "left" : {
+      "template" : "StaticSpikes"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "2"
+      }
+    },
+    "up" : {
+      "template" : "Sand",
+      "item" : {
+        "template" : "Key"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : 0,
+    "z" : 1,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Icy"
+    },
+    "front" : {
+      "template" : "StaticSpikes"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Exit",
+      "properties" : {
+        "Secret" : "false",
+        "NextLevel" : ""
+      }
+    },
+    "up" : {
+      "template" : "Sand"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : 2,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Magnet",
+      "properties" : {
+        "State" : "1",
+        "Mode" : "0",
+        "Color" : "3",
+        "BeamDistance" : "2"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 1,
+    "y" : 2,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Goblet"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 2,
+    "y" : -2,
+    "z" : 2,
+    "left" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "0"
+      }
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Sand"
+    },
+    "back" : {
+      "template" : "Sand"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 3,
+    "y" : -2,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Key"
+      }
+    },
+    "back" : {
+      "template" : "StaticSpikes"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -2,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "Key"
+      }
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Sand"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 4,
+    "y" : -2,
+    "z" : 3,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Sand"
+    },
+    "front" : {
+      "template" : "Sand"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -3,
+    "z" : 3,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Sand"
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : -2,
+    "z" : 1,
+    "left" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Sand"
+    },
+    "down" : {
+      "template" : "Sand"
+    },
+    "up" : {
+      "template" : "Sand"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 7,
+    "y" : -2,
+    "z" : 4,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 7,
+    "y" : -2,
+    "z" : 3,
+    "left" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "PortalEntrance",
+        "properties" : {
+          "Color" : "0"
+        }
+      }
+    },
+    "right" : {
+      "template" : "Magnet",
+      "properties" : {
+        "State" : "1",
+        "Mode" : "0",
+        "Color" : "3",
+        "BeamDistance" : "2"
+      }
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 7,
+    "y" : -2,
+    "z" : 2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -2,
+    "y" : 0,
+    "z" : 4,
+    "left" : {
+      "template" : "Sand",
+      "item" : {
+        "template" : "GreenDiamond"
+      }
+    },
+    "right" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "0"
+      }
+    },
+    "front" : {
+      "template" : "Magnet",
+      "properties" : {
+        "State" : "1",
+        "Mode" : "0",
+        "Color" : "3",
+        "BeamDistance" : "2"
+      }
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal"
+    },
+    "up" : {
+      "template" : "Normal"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -4,
+    "y" : 0,
+    "z" : 3,
+    "left" : {
+      "template" : "PortalExit",
+      "properties" : {
+        "Color" : "0",
+        "Direction" : "0"
+      }
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Sand"
+    },
+    "back" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "3"
+      }
+    },
+    "down" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "3"
+      }
+    },
+    "up" : {
+      "template" : "OneWay",
+      "properties" : {
+        "Direction" : "3"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -3,
+    "y" : 0,
+    "z" : -2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Normal"
+    },
+    "back" : {
+      "template" : "Normal"
+    },
+    "down" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "up" : {
+      "template" : "Normal",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    }
+  }, {
+    "template" : "Normal",
+    "x" : -2,
+    "y" : 0,
+    "z" : -2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Button",
+      "properties" : {
+        "Color" : "5"
+      }
+    },
+    "front" : {
+      "template" : "Sand"
+    },
+    "back" : {
+      "template" : "Sand",
+      "item" : {
+        "template" : "BronzeCoin"
+      }
+    },
+    "down" : {
+      "template" : "Sand"
+    },
+    "up" : {
+      "template" : "Sand"
+    }
+  }, {
+    "template" : "Normal",
+    "x" : 0,
+    "y" : 0,
+    "z" : -2,
+    "left" : {
+      "template" : "Normal"
+    },
+    "right" : {
+      "template" : "Normal"
+    },
+    "front" : {
+      "template" : "Sand"
+    },
+    "back" : {
+      "template" : "Magnet",
+      "properties" : {
+        "State" : "1",
+        "Mode" : "0",
+        "Color" : "3",
+        "BeamDistance" : "2"
+      }
+    },
+    "down" : {
+      "template" : "StaticSpikes"
+    },
+    "up" : {
+      "template" : "Trampoline"
+    }
+  }, {
+    "template" : "ToggleBlock",
+    "properties" : {
+      "Activated" : "false",
+      "Color" : "5"
+    },
+    "x" : 1,
+    "y" : -4,
+    "z" : 1
+  } ],
+  "balls" : [ {
+    "template" : "Hiro",
+    "initialPosition" : {
+      "x" : 3,
+      "y" : 0,
+      "z" : 2,
+      "side" : 0,
+      "direction" : 0
+    }
+  } ]
+}

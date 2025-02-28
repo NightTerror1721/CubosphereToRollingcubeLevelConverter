@@ -19,7 +19,7 @@ public class CubosphereSide extends CubosphereLevelElement
     @Getter private final @NonNull SideTag tag;
     @Getter private final @NonNull SideId id;
     
-    @Getter @Setter private CubosphereItem item = null;
+    @Getter private CubosphereItem item = null;
     
     private CubosphereSide(@NonNull CubosphereBlock block, @NonNull SideTag tag, String template)
     {
@@ -37,6 +37,13 @@ public class CubosphereSide extends CubosphereLevelElement
     
     
     public final boolean hasItem() { return item != null; }
+
+    public final void setItem(CubosphereItem item)
+    {
+        this.item = item;
+        if(item != null)
+            item.setSide(this);
+    }
     
     public final @NonNull String getSideTemplate()
     {
@@ -55,10 +62,18 @@ public class CubosphereSide extends CubosphereLevelElement
         return create(block, tag, newTemplate);
     }
     
+    private String getDeepTemplate()
+    {
+        var template = getTemplate();
+        if(template.isBlank())
+            return block.getTemplate();
+        return template;
+    }
+    
     
     final void toRollingcubeSide(@NonNull Block rblock, @NonNull CubosphereLevelConversionData data)
     {
-        switch(getTemplate().toLowerCase())
+        switch(getDeepTemplate().toLowerCase())
         {
             case "aircondition" -> unknown(rblock, data);
             case "breakclock" -> unknown(rblock, data);
@@ -106,32 +121,38 @@ public class CubosphereSide extends CubosphereLevelElement
                 rside.setPropertyBoolean("Activated", getPropertyBoolean("StartActive"));
                 rside.setPropertyEnumOrdinal("NumOfBeams", 1);
             }
-            case "lightbarrier" -> unknown(rblock, data);
+            case "lightbarrier" -> {
+                var rside = rblock.changeSide(tag, BlockTemplate.LIGHT_SENSOR);
+                rside.setPropertyEnumOrdinal("Color", CubosphereUtils.toRollingcubeColorId(getPropertyInteger("Color")));
+                rside.setPropertyBoolean("OneActivation", false);
+                rside.setPropertyEnumOrdinal("Mode", 2);
+                rside.setPropertyBoolean("Emitter", !getPropertyBoolean("ReverseDirection"));
+            }
             case "magnet" -> {
                 var rside = rblock.changeSide(tag, BlockTemplate.MAGNET);
-                
-                int distance = Math.clamp(getPropertyInteger("Distance"), 0, 100);
+
+                int rawDistance = getPropertyInteger("Distance");
+                int distance = Math.clamp(Math.round(Math.abs(rawDistance) * 0.4f + 0.2f), 0, 100);
                 boolean bistate = getPropertyBoolean("TwoState");
                 int startStrength = getPropertyInteger("StartStrength");
                 
                 rside.setPropertyInteger("BeamDistance", Math.max(0, distance));
                 rside.setPropertyEnumOrdinal("Color", CubosphereUtils.toRollingcubeColorId(getPropertyInteger("Color")));
                 
-                if(distance == 0)
+                if(distance <= 0)
+                {
                     rside.setPropertyEnumOrdinal("State", startStrength % 2);
+                    rside.setPropertyEnumOrdinal("Mode", 1);
+                }
                 else if(bistate)
                 {
-                    if(distance > 0)
-                        rside.setPropertyEnumOrdinal("State", startStrength % 3);
-                    else
-                        rside.setPropertyEnumOrdinal("State", 2 - (startStrength % 2));
+                    rside.setPropertyEnumOrdinal("State", 1 + startStrength % 2);
+                    rside.setPropertyEnumOrdinal("Mode", rawDistance < 0 ? 2 : 3);
                 }
                 else
                 {
-                    if(distance > 0)
-                        rside.setPropertyEnumOrdinal("State", 1 + startStrength % 2);
-                    else
-                        rside.setPropertyEnumOrdinal("State", 2 + startStrength % 2);
+                    rside.setPropertyEnumOrdinal("State", startStrength % 3);
+                    rside.setPropertyEnumOrdinal("Mode", 0);
                 }
             }
             case "normal1" -> rblock.changeSide(tag, BlockTemplate.NORMAL);

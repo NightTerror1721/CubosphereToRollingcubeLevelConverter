@@ -120,7 +120,7 @@ public class CubosphereBlock extends CubosphereLevelElement
             case "button" -> Block.create(BlockTemplate.BUTTON);
             case "counter" -> {
                 var blk = Block.create(BlockTemplate.COUNTER);
-                blk.setPropertyEnumOrdinal("Times", Math.clamp(getPropertyInteger("Counter"), 1, 9));
+                blk.setPropertyEnumOrdinal("Times", Math.clamp(getPropertyInteger("Counter"), 1, 9) - 1);
                 yield blk;
             }
             case "elevator" -> {
@@ -133,12 +133,14 @@ public class CubosphereBlock extends CubosphereLevelElement
                 float delayTime = Math.max(0, getPropertyFloat("DelayTime"));
                 
                 int steps = ((amplitude % 2) != 0 ? amplitude + 1 : amplitude) / 2;
+                int movementMode = delayTime > 0 ? 0 : 1;
                 
                 blk.setPropertyInteger("ForwardSteps", steps);
                 blk.setPropertyInteger("BackwardSteps", steps);
                 blk.setPropertyEnumOrdinal("Direction", CubosphereUtils.toRollingcubeElevatorDirection(direction, phase));
                 blk.setPropertyFloat("Speed", speed);
                 blk.setPropertyFloat("DelayTime", delayTime);
+                blk.setPropertyEnumOrdinal("MovementMode", movementMode);
                 
                 yield blk;
             }
@@ -186,11 +188,31 @@ public class CubosphereBlock extends CubosphereLevelElement
             case "tele_target" -> unknown(data);
             case "teleport" -> Block.create(BlockTemplate.TELEPORT);
             case "timestop" -> Block.create(BlockTemplate.TIME_STOP);
-            case "toggleblock" -> Block.create(BlockTemplate.TOGGLE);
+            case "toggleblock" -> {
+                var blk = Block.create(BlockTemplate.TOGGLE);
+                
+                boolean activated = getPropertyBoolean("StartActive");
+                int color = CubosphereUtils.toRollingcubeColorId(getPropertyInteger("Color"));
+                
+                blk.setPropertyBoolean("Activated", activated);
+                blk.setPropertyEnumOrdinal("Color", color);
+                
+                yield blk;
+            }
             case "tramp" -> Block.create(BlockTemplate.TRAMPOLINE);
             case "tramphigh" -> Block.create(BlockTemplate.VENT);
             case "tspikes" -> unknown(data);
-            case "warptunnel" -> unknown(data);
+            case "warptunnel" -> {
+                var blk = Block.create(BlockTemplate.WARP);
+                
+                String nextLevel = getPropertyString("Next_Level");
+                
+                blk.setPropertyBoolean("RequireKeys", false);
+                if(!nextLevel.isBlank() && !nextLevel.equals("nextlevel"))
+                    blk.setPropertyString("NextLevel", nextLevel);
+                
+                yield blk;
+            }
             default -> unknown(data);
         };
         

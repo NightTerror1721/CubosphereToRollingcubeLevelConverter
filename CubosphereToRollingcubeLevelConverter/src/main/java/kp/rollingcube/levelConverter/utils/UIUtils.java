@@ -1,5 +1,6 @@
 package kp.rollingcube.levelConverter.utils;
 
+import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -27,8 +28,8 @@ public class UIUtils
     
     public void useSystemLookAndFeel()
     {
-        try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); }
-        catch(ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException ex) { ex.printStackTrace(System.err); }
+        try { UIManager.setLookAndFeel(new FlatDarkLaf()); }
+        catch(UnsupportedLookAndFeelException ex) { ex.printStackTrace(System.err); }
     }
     
     public void focus(@NonNull Window frame)

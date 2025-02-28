@@ -44,7 +44,25 @@ public enum Music
     KULA_BETA("KulaBeta", "15_-_beta"),
     VOLCANO("Volcano", "Mindmangler"),
     DREAM("Dream", "14_-_hidden_track"),
-    NIGHT("Night", "Cave Ambient 2", "Temple of Groovy");
+    NIGHT("Night", "Cave Ambient 2", "Temple of Groovy"),
+    FIERY("Fiery", "No Time To Lose"),
+    CLOUDY("Cloudy", "Thatianne and the Sylph"),
+    FAR_EAST("FarEast", "Journey to the East"),
+    SUPERNOVA("Supernova", "Triumphant Returns"),
+    PERSIA("Persia", "Persian Invasion"),
+    PEAKS("Peaks", "Everything is Floating Upward"),
+    SUNSET("Sunset", "Rose At Meridiem"),
+    PIXEL_KINGDOM("PixelKingdom", "Thatianne and the Sylph"),
+    WARP_BONUS("WarpBonus", "Core of the Storm"),
+    AQUA("Aqua", "Aquatopia"),
+    DARK("Dark", "Orchestral Theme"),
+    RGB("RGB", "Space Forest"),
+    GREECE("Greece", "Running through Greece"),
+    GANYMEDE("Ganymede"),
+    CITY("City", "Recovery"),
+    DIGITAL_NETWORK("DigitalNetwork", "Never Stop"),
+    ORBITAL("Orbital", "At the Speed of Light"),
+    AZURE("Azure", "Heretical Mysticism");
         
     public static final @NonNull Music DEFAULT = EGYPT;
     
